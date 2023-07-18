@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<code>WeArePlanetCore</code>
+	<name>weareplanet core: load payment methods.
+	</name>
+	<version>1.1.3</version>
+	<author>Customweb GmbH</author>
+	<link>http://github.com/weareplanet-payment/opencart</link>
+	<file path="admin/controller/extension/extension/payment.php">
+		<operation>
+			<search><![CDATA[
+       				$this->model_setting_extension->uninstall('payment', $value);
+            ]]></search>
+			<add position="replace" offset="2"><![CDATA[
+		            if (strpos($value, 'weareplanet_') === false) {
+		            	$this->model_setting_extension->uninstall('payment', $value);
+		            }
+            ]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[
+       				unset($extensions[$key]);
+            ]]></search>
+			<add position="replace" offset="2"><![CDATA[
+		            if (strpos($value, 'weareplanet_') === false) {
+		            	unset($extensions[$key]);
+		            }
+            ]]></add>
+		</operation>
+	</file>
+	<file path="admin/controller/startup/permission.php">
+		<operation>
+			<search><![CDATA[
+				$extension = array(
+            ]]></search>
+			<add position="after"><![CDATA[
+					'extension/weareplanet',
+            ]]></add>
+		</operation>
+	</file>
+	<!-- order info -->
+	<file path="system/library/language.php">
+		<operation>
+			<search><![CDATA[
+				is_file($file)
+            ]]></search>
+			<add position="replace"><![CDATA[
+				is_file(modification($file))
+            ]]></add>
+		</operation>
+	</file>
+	<file path="system/library/language.php">
+		<operation>
+			<search><![CDATA[
+				file_exists($file)
+            ]]></search>
+			<add position="replace"><![CDATA[
+				file_exists(modification($file))
+            ]]></add>
+		</operation>
+	</file>
+	<file path="system/library/language.php">
+		<operation>
+			<search regex="true"><![CDATA[
+	~(require|include)(_once)?\(([^)]+)~
+            ]]></search>
+			<add><![CDATA[
+	$1$2(modification($3)
+            ]]></add>
+		</operation>
+	</file>
+	<file path="admin/controller/sale/order.php">
+		<operation>
+			<search><![CDATA[
+				if (is_file(DIR_CATALOG . 'controller/extension/payment/' . $order_info['payment_code'] . '.php')) {
+            ]]></search>
+			<add position="replace"><![CDATA[
+				if (is_file(DIR_CATALOG . 'controller/extension/payment/' . $order_info['payment_code'] . '.php') || strpos($order_info['payment_code'], 'weareplanet_') === 0) {
+            ]]></add>
+		</operation>
+	</file>
+	
+	<file path="system/engine/action.php">
+		<operation>
+			<search><![CDATA[
+	is_file($file)
+            ]]></search>
+			<add position="replace"><![CDATA[
+	is_file(modification($file))
+            ]]></add>
+		</operation>
+	</file>
+	<file path="system/engine/action.php">
+		<operation>
+			<search regex="true"><![CDATA[
+	~(require|include)(_once)?\(([^)]+)~
+            ]]></search>
+			<add><![CDATA[
+	$1$2(modification($3)
+            ]]></add>
+		</operation>
+	</file>
+	<file path="system/engine/loader.php">
+		<operation>
+			<search><![CDATA[
+	is_file($file)
+            ]]></search>
+			<add position="replace"><![CDATA[
+	is_file(modification($file))
+            ]]></add>
+		</operation>
+	</file>
+</modification>

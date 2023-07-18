@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<code>WeArePlanetTransactionView</code>
+	<name>weareplanet transaction view: List transactions in the opencart backend.
+	</name>
+	<version>1.0.0</version>
+	<author>Customweb GmbH</author>
+	<link>http://github.com/weareplanet-payment/opencart</link>
+	<file path="admin/controller/common/column_left.php">
+		<operation>
+			<search><![CDATA[if ($this->user->hasPermission('access', 'sale/recurring')) {]]></search>
+			<add position="before"><![CDATA[
+			if ($this->user->hasPermission('access', 'extension/weareplanet/transaction')) {
+				$this->language->load('extension/weareplanet');
+				$sale[] = array(
+					'name'	   => $this->language->get('heading_transaction_list'),
+					'href'     => $this->url->link('extension/weareplanet/transaction', 'user_token=' . $this->session->data['user_token'], true),
+					'children' => array()		
+				);
+				$this->load->language('common/column_left');
+			}
+			]]></add>
+		</operation>
+	</file>
+</modification>

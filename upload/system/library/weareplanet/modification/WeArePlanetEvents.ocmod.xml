@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<code>WeArePlanetEvents</code>
+	<name>weareplanet events: handle events unavailable in Opencart 2.0.x and 2.1.x.
+	</name>
+	<version>1.1.0</version>
+	<author>Customweb GmbH</author>
+	<link>http://github.com/weareplanet-payment/opencart</link>
+	<file path="catalog/controller/common/header.php">
+		<operation>
+			<search><![CDATA[
+		$data['analytics'] = array();
+            ]]></search>
+			<add position="before"><![CDATA[
+		try{
+			$this->load->controller('extension/weareplanet/event/includeDeviceIdentifier');
+			
+			\WeArePlanet\Entity\Cron::cleanUpHangingCrons($this->registry);
+			\WeArePlanet\Entity\Cron::insertNewPendingCron($this->registry);
+			$weareplanet_cron_token = \WeArePlanet\Entity\Cron::getCurrentSecurityTokenForPendingCron($this->registry);
+			if($weareplanet_cron_token) {
+				$data['weareplanet_cron'] = \WeArePlanetVersionHelper::createUrl($this->url, 'extension/weareplanet/cron', array('security_token' => $weareplanet_cron_token), $this->config->get('config_secure'));
+			}
+		} catch (Exception $e) { \WeArePlanetHelper::instance($this->registry)->log($e->getMessage()); }
+            ]]></add>
+		</operation>
+	</file>
+	<file path="admin/controller/extension/modification.php">
+		<operation>
+			<search><![CDATA[
+		// Maintance mode back to original settings
+            ]]></search>
+			<add position="before"><![CDATA[
+		$this->load->controller('extension/weareplanet/event/createMethodConfigurationFiles');
+            ]]></add>
+		</operation>
+	</file>
+</modification>

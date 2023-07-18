@@ -1,0 +1,10 @@
+<?php
+require_once(modification(DIR_SYSTEM . 'library/weareplanet/dynamic/catalog/controller.php'));
+
+class #classname# extends ControllerExtensionPaymentWeArePlanetBase {
+	private $code = "#code#";
+
+	protected function getCode(){
+		return $this->code;
+	}
+}

@@ -1,0 +1,192 @@
+:meta-description:	The documentation for the Opencart extension that enables processing payments with WeArePlanet.
+:meta-keywords:		WeArePlanet, Opencart 3.0, Opencart Module, Opencart Payment, Opencart Extension, Payment, Payment Integration, Documentation
+
+= WeArePlanet Opencart 3.0
+
+:imagesdir: resource
+
+== Prerequisites
+
+@include(prerequisites.adoc)
+
+== Installation
+
+1. link:@WalleeReleasePath()[Download] the extension.
+2. Extract the files and upload the content of the `Upload` directory into the root directory of your store using FTP/SSH.
+3. Login to the backend of your OpenCart store.
+4. Navigate to Extensions -> Payment to install the plugin.
+
+== Configuration
+
+1. Navigate to Extensions -> Payment -> WeArePlanet in your OpenCart backend and enter the WeArePlanet Space ID, User ID and Authentification Key that you can create an link:https://paymentshub.weareplanet.com/en-us/doc/permission-concept#_create_application_users[application user^].
++
+image::settings.png[]
++
+If your store is configured for multistore, you may use different spaces for each store to configure different behaviours.
++
+2. Optionally configure which OpenCart status should be set depending on the WeArePlanet state. For more information check out the https://paymentshub.weareplanet.com/doc/payment/processor-concept[Processor Concept].
+3. Optionally disable downloading invoice and packing slip. These settings allow customers to download the documents from their order overview in the OpenCart frontend.
+4. Optionally change the debug level which increases what information is logged in your system/storage/logs/ folder, see xref:Error logging[].
+5. After saving the configuration, the payment methods are created in the OpenCart store and the necessary webhooks are set up.
+6. Navigate to Extensions > Modifications and refresh modifications so all files which are necessary to process payments are created.
+
+The main configuration is now finished. You should see the payment methods in your checkout. To view the payment method configuration in the backend of OpenCart go to Shop Settings > Payment Methods. 
+
+
+== Payment method configuration
+
+Payment method configuration is done in WeArePlanet. The WeArePlanet payment method configurations are synchronized automatically into the OpenCart store. 
+
+The payment methods will not appear in the payment overview of your OpenCart backend.
+
+=== Customization
+
+If you want to change the payment method description, title, logo, etc you need to do this in the link:https://paymentshub.weareplanet.com/space/select?target=/payment/method-configuration/list[payment method configuration^]. Changes will be synchronized automatically. 
+
+== State graph
+
+The Payment Process of WeArePlanet is *completely standardized for every payment method* you can process. This gives you the ability to simply add 
+a payment method or processor without changes inside of your OpenCart configuration. An overview about the states and the payment processes of WeArePlanet
+can be found in the link:https://paymentshub.weareplanet.com/en-us/doc/payment/transaction-process[Payment Documentation^].
+
+In the following section we provide you an overview about how the WeArePlanet states are mapped into the OpenCart State graph for orders. 
+
+=== State mapping of OpenCart orders
+
+Below you find a diagram that shows the state machine of OpenCart for orders including additional information for the state transitions.
+
+image::state_graph.svg[]
+
+[glossary]
+1. When the transaction is marked as `authorized` in WeArePlanet the order within OpenCart will be marked as `Processed`. The amount is only reserved at this point. The order is not yet ready to be fulfilled.
+2. When the transaction fails during the authorization process the OpenCart order is marked as `Failed`.
+3. In case the delivery indication is pending, the order within OpenCart will move into `Processing` (in thise case you have to decide the outcome of the delivery indication e.g. You have configured to manually check transactions without 3d Secure). In such situations a manual task is created and an alert appears in the WeArePlanet & OpenCart backends. You can then resolve the manual task within the WeArePlanet backend. This changes the transaction status, which is transmitted back to OpenCart.  See more details in xref:On hold orders[].
+4. In case the decision about the fulfillment is negative, the order within OpenCart will be marked as `Declined` and should not be fulfilled.
+5. If you decide to void an authorized transaction (in case for example the products ordered are no longer in stock), the order within OpenCart will be marked as `Voided`.
+6. When the transaction is marked in WeArePlanet as `fulfill` the order within OpenCart will be be marked as `Complete`. This is when you can start the fulfillment process. The plugin will in this case not change the status anymore.
+
+NOTE: This describes the default state machine of OpenCart orders, however you have the option in the WeArePlanet plugin configuration to define different order status.
+
+For information about deferred completion, see xref:Complete (capture) an order[]
+
+== Transaction management
+
+You can capture, cancel and refund transactions directly from within the OpenCart backend. Please note 
+if you refund, void or capture transaction inside WeArePlanet the events will not be synchronized into 
+OpenCart.
+
+=== Complete (capture) an order
+
+You have the possibility for your transactions to have the payment only authorized after the order is placed. Inside the link:https://paymentshub.weareplanet.com/space/select?target=/payment/connector-configuration/list[connector configuration^] you have the option, if the payment method supports it, to define whether the payment should be completed immediately or deferred.
+
+In order to capture a transaction, navigate to Administer Orders -> WeArePlanet Transactions, open the transaction and click on the `Complete` button.
+
+NOTE: When the completion is pending in WeArePlanet the order will stay in pending state.
+
+image::capture-transaction.png[]
+
+=== Void a transaction
+
+In order to void a transaction, open the transaction and click on the `Void` button. 
+
+NOTE: You can only void transactions that are not yet completed. 
+
+image::void-transaction.png[]
+
+=== Refund of a transaction
+
+You have the possibility to refund already completed transactions. In order to do so, open the transaction and click on the `Refund` button. In case the payment method does not support refund, you will not see the possibility to issue online refunds.
+
+image::refund-transaction.png[]
+
+You can make refunds based on product quantity. In order to do so enter the amount of products you wish to refund to your customer. 
+
+image::refund-transaction2.png[]
+
+You can carry out as many individual refunds as you wish until you have reached the quantity of the original order. 
+The status of the order then automatically switches to complete.
+
+NOTE: It can take some time until you see the refund in OpenCart. Refunds will only be visible once they have been processed successfully.
+
+=== Alerts
+
+If there are open manual tasks in your WeArePlanet account or if a non-synchronous task such as a void, completion or refund fails, this information is displayed in your OpenCart backend.
+
+image::alert.png[]
+
+=== On hold orders
+
+As long as the delivery should not be done the state of the order will be in `Processing` by default. This happens when the transaction in WeArePlanet
+has not reached the fulfill state. 
+
+NOTE: You can configure which OpenCart status should be set in that case. This can be done in the extension settings. Simply choose which OpenCart status should be set for the `Completed` WeArePlanet state.
+
+There are essentially two reasons why this can happen:
+
+* The transaction is not completed. In this case you have to complete the transaction as written above. 
+* As long as we are not able to tell you if you should fulfill the order. The delivery decision is done automatically. If this does not happen
+within the defined time frame, WeArePlanet will generate a manual task which you should observe and follow the instructions.
+When there is a manual task we will also display it in the OpenCart Backend. 
+
+You can find more information about manual tasks in our link:https://paymentshub.weareplanet.com/en-us/doc/manual-tasks[Manual Task Documentation^].
+
+
+=== Limitations of the synchronization between WeArePlanet and OpenCart
+
+Please note that captures, voids and refunds done in WeArePlanet are not synchronized into OpenCart.
+You should therefore always perform captures, voids and refunds inside the OpenCart backend and not inside WeArePlanet.
+
+
+=== Tokenization
+
+In case the payment method supports tokenization you can store the payment details of your customer for future purchases. 
+In order to use this feature make sure that the *One-Click-Payment Mode* in your link:https://paymentshub.weareplanet.com/space/select?target=/payment/method-configuration/list[payment method configuration] is set to `allow` or `force` storage.  
+
+NOTE: Tokenization is not available for guest checkouts.
+
+== Third party support
+
+These third party extensions are supported by the WeArePlanet OpenCart extension:
+
+* https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=13535[X-fee]
+* https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=15580[AJAX Quick Checkout FREE]
+- We offer an additional modification for compatibility, which is not active by default.
+
+== Mail sending behaviours
+
+Opencart sends the order confirmation mail once the order has been created, but before the authorization took place. 
+This leads to customers receiving confirmation before the payment was taken.
+
+To prevent order confirmations before authorization, set “processing status” in plugin configuration to “none” or “keine” (language dependent):
+image::opencart_order_state_mapping.png[]
+
+Then the order status will only be set once it is authorized, e.g. once the payment info is entered.
+
+To fully prevent opencart emails for orders, activate opencart modification “prevent confirmation mails”, 
+in this case the portal can be configured to send order confirmations.
+
+== Error logging
+
+The extension will log various unexpected errors or information which can help identify the cause of the error. You can find the logs on the server of your store in the system/storage/logs/ folder.
+You have the option to change the debug level which increases what information is logged:
+
+* Error (Default): Logs unexpected errors only. 
+* Debug: Logs more information helpful for debugging.
+
+
+== FAQ
+
+=== How can I make the payment methods appear in the checkout?
+
+Make sure that you followed the <<_configuration>> section by stating your WeArePlanet Space ID, User ID and Authentification Key in the OpenCart backend. By saving the configuration form the synchronization of the payment methods and the set up of the webhooks are initiated.
+
+If this does not solve the problem, it could be that you use a special fee or coupon module that we do not support. Try to disable this plugin and see if it helps. 
+The payment methods are only displayed if the plugin's total calculation matches the actual order total.
+
+=== Why do the order totals in OpenCart and WeArePlanet not match?
+
+If you have configured a separate currency to have a non-1.00 value please be aware that there may be rounding errors due to the way OpenCart handles currency totals and taxes. The discrepancies should in all cases be kept to an absolute minimum.
+
+== Support
+
+@include(support.adoc)
