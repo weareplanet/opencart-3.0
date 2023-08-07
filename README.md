@@ -13,7 +13,7 @@ This repository contains the OpenCart  WeArePlanet payment module that enables t
 
 ## Documentation
 
-* [English](@WalleeDocPath(/docs/en/documentation.html))
+* [English](https://plugin-documentation.weareplanet.com/weareplanet/opencart-3.0/1.0.56/docs/en/documentation.html)
 
 ## Support
 
