@@ -21,4 +21,4 @@ Support queries can be issued on the [WeArePlanet support site](https://payments
 
 ## License
 
-Please see the [license file](@WalleeRepoPath(/LICENSE)) for more information.
+Please see the [license file](https://github.com/weareplanet/opencart-3.0/blob/main/LICENSE) for more information.
