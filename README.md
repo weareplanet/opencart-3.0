@@ -17,7 +17,7 @@ This repository contains the OpenCart  WeArePlanet payment module that enables t
 
 ## Support
 
-Support queries can be issued on the [WeArePlanet support site](https://paymentshub.weareplanet.com/space/select?target=/support).
+For support queries please contact [WeArePlanet support](mailto:support@datatrans.ch?subject=Support%20on%20Opencart%203.0%20-%20Topic%3A).
 
 ## License
 
