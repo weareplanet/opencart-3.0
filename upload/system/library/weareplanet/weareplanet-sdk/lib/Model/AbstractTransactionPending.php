@@ -28,7 +28,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  *
  * @category    Class
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class AbstractTransactionPending implements ModelInterface, ArrayAccess
@@ -48,7 +48,7 @@ class AbstractTransactionPending implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'allowed_payment_method_brands' => '\WeArePlanet\Sdk\Model\PaymentMethodBrand[]',
+        'allowed_payment_method_brands' => 'int[]',
         'allowed_payment_method_configurations' => 'int[]',
         'billing_address' => '\WeArePlanet\Sdk\Model\AddressCreate',
         'completion_behavior' => '\WeArePlanet\Sdk\Model\TransactionCompletionBehavior',
@@ -75,7 +75,7 @@ class AbstractTransactionPending implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'allowed_payment_method_brands' => null,
+        'allowed_payment_method_brands' => 'int64',
         'allowed_payment_method_configurations' => 'int64',
         'billing_address' => null,
         'completion_behavior' => null,
@@ -249,8 +249,8 @@ class AbstractTransactionPending implements ModelInterface, ArrayAccess
             $invalidProperties[] = "invalid value for 'customer_email_address', the character length must be smaller than or equal to 254.";
         }
 
-        if (!is_null($this->container['failed_url']) && (mb_strlen($this->container['failed_url']) > 1000)) {
-            $invalidProperties[] = "invalid value for 'failed_url', the character length must be smaller than or equal to 1000.";
+        if (!is_null($this->container['failed_url']) && (mb_strlen($this->container['failed_url']) > 2000)) {
+            $invalidProperties[] = "invalid value for 'failed_url', the character length must be smaller than or equal to 2000.";
         }
 
         if (!is_null($this->container['failed_url']) && (mb_strlen($this->container['failed_url']) < 9)) {
@@ -269,8 +269,8 @@ class AbstractTransactionPending implements ModelInterface, ArrayAccess
             $invalidProperties[] = "invalid value for 'shipping_method', the character length must be smaller than or equal to 200.";
         }
 
-        if (!is_null($this->container['success_url']) && (mb_strlen($this->container['success_url']) > 1000)) {
-            $invalidProperties[] = "invalid value for 'success_url', the character length must be smaller than or equal to 1000.";
+        if (!is_null($this->container['success_url']) && (mb_strlen($this->container['success_url']) > 2000)) {
+            $invalidProperties[] = "invalid value for 'success_url', the character length must be smaller than or equal to 2000.";
         }
 
         if (!is_null($this->container['success_url']) && (mb_strlen($this->container['success_url']) < 9)) {
@@ -360,7 +360,7 @@ class AbstractTransactionPending implements ModelInterface, ArrayAccess
     /**
      * Gets allowed_payment_method_brands
      *
-     * @return \WeArePlanet\Sdk\Model\PaymentMethodBrand[]
+     * @return int[]
      */
     public function getAllowedPaymentMethodBrands()
     {
@@ -370,7 +370,7 @@ class AbstractTransactionPending implements ModelInterface, ArrayAccess
     /**
      * Sets allowed_payment_method_brands
      *
-     * @param \WeArePlanet\Sdk\Model\PaymentMethodBrand[] $allowed_payment_method_brands 
+     * @param int[] $allowed_payment_method_brands 
      *
      * @return $this
      */
@@ -555,8 +555,8 @@ class AbstractTransactionPending implements ModelInterface, ArrayAccess
      */
     public function setFailedUrl($failed_url)
     {
-        if (!is_null($failed_url) && (mb_strlen($failed_url) > 1000)) {
-            throw new \InvalidArgumentException('invalid length for $failed_url when calling AbstractTransactionPending., must be smaller than or equal to 1000.');
+        if (!is_null($failed_url) && (mb_strlen($failed_url) > 2000)) {
+            throw new \InvalidArgumentException('invalid length for $failed_url when calling AbstractTransactionPending., must be smaller than or equal to 2000.');
         }
         if (!is_null($failed_url) && (mb_strlen($failed_url) < 9)) {
             throw new \InvalidArgumentException('invalid length for $failed_url when calling AbstractTransactionPending., must be bigger than or equal to 9.');
@@ -610,7 +610,7 @@ class AbstractTransactionPending implements ModelInterface, ArrayAccess
     /**
      * Sets language
      *
-     * @param string $language 
+     * @param string $language The language that is linked to the object.
      *
      * @return $this
      */
@@ -689,7 +689,7 @@ class AbstractTransactionPending implements ModelInterface, ArrayAccess
     /**
      * Sets meta_data
      *
-     * @param map[string,string] $meta_data Meta data allow to store additional data along the object.
+     * @param map[string,string] $meta_data Allow to store additional information about the object.
      *
      * @return $this
      */
@@ -774,8 +774,8 @@ class AbstractTransactionPending implements ModelInterface, ArrayAccess
      */
     public function setSuccessUrl($success_url)
     {
-        if (!is_null($success_url) && (mb_strlen($success_url) > 1000)) {
-            throw new \InvalidArgumentException('invalid length for $success_url when calling AbstractTransactionPending., must be smaller than or equal to 1000.');
+        if (!is_null($success_url) && (mb_strlen($success_url) > 2000)) {
+            throw new \InvalidArgumentException('invalid length for $success_url when calling AbstractTransactionPending., must be smaller than or equal to 2000.');
         }
         if (!is_null($success_url) && (mb_strlen($success_url) < 9)) {
             throw new \InvalidArgumentException('invalid length for $success_url when calling AbstractTransactionPending., must be bigger than or equal to 9.');

@@ -27,7 +27,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @category    Class
  * @description 
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class ApplicationUserCreateWithMacKey extends ApplicationUser 
@@ -207,7 +207,7 @@ class ApplicationUserCreateWithMacKey extends ApplicationUser
     /**
      * Sets mac_key
      *
-     * @param string $mac_key 
+     * @param string $mac_key The user's authentication key securing requests. Only displayed a single time after the user has been created.
      *
      * @return $this
      */

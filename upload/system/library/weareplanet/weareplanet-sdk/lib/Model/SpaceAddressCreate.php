@@ -29,7 +29,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @category    Class
  * @description 
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class SpaceAddressCreate implements ModelInterface, ArrayAccess
@@ -55,7 +55,9 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
         'email_address' => 'string',
         'family_name' => 'string',
         'given_name' => 'string',
+        'mobile_phone_number' => 'string',
         'organization_name' => 'string',
+        'phone_number' => 'string',
         'postal_state' => 'string',
         'postcode' => 'string',
         'sales_tax_number' => 'string',
@@ -76,7 +78,9 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
         'email_address' => null,
         'family_name' => null,
         'given_name' => null,
+        'mobile_phone_number' => null,
         'organization_name' => null,
+        'phone_number' => null,
         'postal_state' => null,
         'postcode' => null,
         'sales_tax_number' => null,
@@ -98,7 +102,9 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
         'email_address' => 'emailAddress',
         'family_name' => 'familyName',
         'given_name' => 'givenName',
+        'mobile_phone_number' => 'mobilePhoneNumber',
         'organization_name' => 'organizationName',
+        'phone_number' => 'phoneNumber',
         'postal_state' => 'postalState',
         'postcode' => 'postcode',
         'sales_tax_number' => 'salesTaxNumber',
@@ -119,7 +125,9 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
         'email_address' => 'setEmailAddress',
         'family_name' => 'setFamilyName',
         'given_name' => 'setGivenName',
+        'mobile_phone_number' => 'setMobilePhoneNumber',
         'organization_name' => 'setOrganizationName',
+        'phone_number' => 'setPhoneNumber',
         'postal_state' => 'setPostalState',
         'postcode' => 'setPostcode',
         'sales_tax_number' => 'setSalesTaxNumber',
@@ -140,7 +148,9 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
         'email_address' => 'getEmailAddress',
         'family_name' => 'getFamilyName',
         'given_name' => 'getGivenName',
+        'mobile_phone_number' => 'getMobilePhoneNumber',
         'organization_name' => 'getOrganizationName',
+        'phone_number' => 'getPhoneNumber',
         'postal_state' => 'getPostalState',
         'postcode' => 'getPostcode',
         'sales_tax_number' => 'getSalesTaxNumber',
@@ -179,7 +189,11 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
         
         $this->container['given_name'] = isset($data['given_name']) ? $data['given_name'] : null;
         
+        $this->container['mobile_phone_number'] = isset($data['mobile_phone_number']) ? $data['mobile_phone_number'] : null;
+        
         $this->container['organization_name'] = isset($data['organization_name']) ? $data['organization_name'] : null;
+        
+        $this->container['phone_number'] = isset($data['phone_number']) ? $data['phone_number'] : null;
         
         $this->container['postal_state'] = isset($data['postal_state']) ? $data['postal_state'] : null;
         
@@ -216,8 +230,16 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
             $invalidProperties[] = "invalid value for 'given_name', the character length must be smaller than or equal to 100.";
         }
 
+        if (!is_null($this->container['mobile_phone_number']) && (mb_strlen($this->container['mobile_phone_number']) > 100)) {
+            $invalidProperties[] = "invalid value for 'mobile_phone_number', the character length must be smaller than or equal to 100.";
+        }
+
         if (!is_null($this->container['organization_name']) && (mb_strlen($this->container['organization_name']) > 100)) {
             $invalidProperties[] = "invalid value for 'organization_name', the character length must be smaller than or equal to 100.";
+        }
+
+        if (!is_null($this->container['phone_number']) && (mb_strlen($this->container['phone_number']) > 100)) {
+            $invalidProperties[] = "invalid value for 'phone_number', the character length must be smaller than or equal to 100.";
         }
 
         if (!is_null($this->container['sales_tax_number']) && (mb_strlen($this->container['sales_tax_number']) > 100)) {
@@ -325,7 +347,7 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
     /**
      * Sets city
      *
-     * @param string $city 
+     * @param string $city The city, town or village.
      *
      * @return $this
      */
@@ -350,7 +372,7 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
     /**
      * Sets country
      *
-     * @param string $country 
+     * @param string $country The two-letter country code (ISO 3166 format).
      *
      * @return $this
      */
@@ -375,7 +397,7 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
     /**
      * Sets dependent_locality
      *
-     * @param string $dependent_locality 
+     * @param string $dependent_locality The dependent locality which is a sub-division of the state.
      *
      * @return $this
      */
@@ -404,7 +426,7 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
     /**
      * Sets email_address
      *
-     * @param string $email_address The email address is used within emails and as reply to address.
+     * @param string $email_address The email address used for communication with clients.
      *
      * @return $this
      */
@@ -429,7 +451,7 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
     /**
      * Sets family_name
      *
-     * @param string $family_name 
+     * @param string $family_name The family or last name.
      *
      * @return $this
      */
@@ -458,7 +480,7 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
     /**
      * Sets given_name
      *
-     * @param string $given_name 
+     * @param string $given_name The given or first name.
      *
      * @return $this
      */
@@ -469,6 +491,35 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
         }
 
         $this->container['given_name'] = $given_name;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets mobile_phone_number
+     *
+     * @return string
+     */
+    public function getMobilePhoneNumber()
+    {
+        return $this->container['mobile_phone_number'];
+    }
+
+    /**
+     * Sets mobile_phone_number
+     *
+     * @param string $mobile_phone_number The phone number of a mobile phone.
+     *
+     * @return $this
+     */
+    public function setMobilePhoneNumber($mobile_phone_number)
+    {
+        if (!is_null($mobile_phone_number) && (mb_strlen($mobile_phone_number) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $mobile_phone_number when calling SpaceAddressCreate., must be smaller than or equal to 100.');
+        }
+
+        $this->container['mobile_phone_number'] = $mobile_phone_number;
 
         return $this;
     }
@@ -487,7 +538,7 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
     /**
      * Sets organization_name
      *
-     * @param string $organization_name 
+     * @param string $organization_name The organization's name.
      *
      * @return $this
      */
@@ -498,6 +549,35 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
         }
 
         $this->container['organization_name'] = $organization_name;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets phone_number
+     *
+     * @return string
+     */
+    public function getPhoneNumber()
+    {
+        return $this->container['phone_number'];
+    }
+
+    /**
+     * Sets phone_number
+     *
+     * @param string $phone_number The phone number.
+     *
+     * @return $this
+     */
+    public function setPhoneNumber($phone_number)
+    {
+        if (!is_null($phone_number) && (mb_strlen($phone_number) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $phone_number when calling SpaceAddressCreate., must be smaller than or equal to 100.');
+        }
+
+        $this->container['phone_number'] = $phone_number;
 
         return $this;
     }
@@ -516,7 +596,7 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
     /**
      * Sets postal_state
      *
-     * @param string $postal_state 
+     * @param string $postal_state The name of the region, typically a state, county, province or prefecture.
      *
      * @return $this
      */
@@ -541,7 +621,7 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
     /**
      * Sets postcode
      *
-     * @param string $postcode 
+     * @param string $postcode The postal code, also known as ZIP, postcode, etc.
      *
      * @return $this
      */
@@ -566,7 +646,7 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
     /**
      * Sets sales_tax_number
      *
-     * @param string $sales_tax_number 
+     * @param string $sales_tax_number The sales tax number of the organization.
      *
      * @return $this
      */
@@ -595,7 +675,7 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
     /**
      * Sets salutation
      *
-     * @param string $salutation 
+     * @param string $salutation The salutation e.g. Mrs, Mr, Dr.
      *
      * @return $this
      */
@@ -624,7 +704,7 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
     /**
      * Sets sorting_code
      *
-     * @param string $sorting_code The sorting code identifies the post office at which the post box is located in.
+     * @param string $sorting_code The sorting code identifying the post office where the PO Box is located.
      *
      * @return $this
      */
@@ -653,7 +733,7 @@ class SpaceAddressCreate implements ModelInterface, ArrayAccess
     /**
      * Sets street
      *
-     * @param string $street 
+     * @param string $street The street or PO Box.
      *
      * @return $this
      */

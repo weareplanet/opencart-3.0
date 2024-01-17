@@ -29,7 +29,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @category    Class
  * @description 
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class Customer implements ModelInterface, ArrayAccess
@@ -299,7 +299,7 @@ class Customer implements ModelInterface, ArrayAccess
     /**
      * Sets created_on
      *
-     * @param \DateTime $created_on The created on date indicates the date on which the entity was stored into the database.
+     * @param \DateTime $created_on The date and time when the object was created.
      *
      * @return $this
      */
@@ -324,7 +324,7 @@ class Customer implements ModelInterface, ArrayAccess
     /**
      * Sets customer_id
      *
-     * @param string $customer_id 
+     * @param string $customer_id The customer's ID in the merchant's system.
      *
      * @return $this
      */
@@ -353,7 +353,7 @@ class Customer implements ModelInterface, ArrayAccess
     /**
      * Sets email_address
      *
-     * @param string $email_address 
+     * @param string $email_address The customer's email address.
      *
      * @return $this
      */
@@ -382,7 +382,7 @@ class Customer implements ModelInterface, ArrayAccess
     /**
      * Sets family_name
      *
-     * @param string $family_name 
+     * @param string $family_name The customer's family or last name.
      *
      * @return $this
      */
@@ -411,7 +411,7 @@ class Customer implements ModelInterface, ArrayAccess
     /**
      * Sets given_name
      *
-     * @param string $given_name 
+     * @param string $given_name The customer's given or first name.
      *
      * @return $this
      */
@@ -440,7 +440,7 @@ class Customer implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
+     * @param int $id A unique identifier for the object.
      *
      * @return $this
      */
@@ -465,7 +465,7 @@ class Customer implements ModelInterface, ArrayAccess
     /**
      * Sets language
      *
-     * @param string $language 
+     * @param string $language The language that is linked to the object.
      *
      * @return $this
      */
@@ -490,7 +490,7 @@ class Customer implements ModelInterface, ArrayAccess
     /**
      * Sets linked_space_id
      *
-     * @param int $linked_space_id The linked space id holds the ID of the space to which the entity belongs to.
+     * @param int $linked_space_id The ID of the space this object belongs to.
      *
      * @return $this
      */
@@ -515,7 +515,7 @@ class Customer implements ModelInterface, ArrayAccess
     /**
      * Sets meta_data
      *
-     * @param map[string,string] $meta_data Meta data allow to store additional data along the object.
+     * @param map[string,string] $meta_data Allow to store additional information about the object.
      *
      * @return $this
      */
@@ -540,7 +540,7 @@ class Customer implements ModelInterface, ArrayAccess
     /**
      * Sets preferred_currency
      *
-     * @param string $preferred_currency 
+     * @param string $preferred_currency The customer's preferred currency.
      *
      * @return $this
      */
@@ -565,7 +565,7 @@ class Customer implements ModelInterface, ArrayAccess
     /**
      * Sets version
      *
-     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+     * @param int $version The version is used for optimistic locking and incremented whenever the object is updated.
      *
      * @return $this
      */

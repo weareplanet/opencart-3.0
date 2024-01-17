@@ -29,7 +29,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @category    Class
  * @description 
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class Permission implements ModelInterface, ArrayAccess
@@ -58,7 +58,8 @@ class Permission implements ModelInterface, ArrayAccess
         'parent' => 'int',
         'path_to_root' => 'int[]',
         'title' => 'map[string,string]',
-        'two_factor_required' => 'bool'
+        'two_factor_required' => 'bool',
+        'web_app_enabled' => 'bool'
     ];
 
     /**
@@ -76,7 +77,8 @@ class Permission implements ModelInterface, ArrayAccess
         'parent' => 'int64',
         'path_to_root' => 'int64',
         'title' => null,
-        'two_factor_required' => null
+        'two_factor_required' => null,
+        'web_app_enabled' => null
     ];
 
     /**
@@ -95,7 +97,8 @@ class Permission implements ModelInterface, ArrayAccess
         'parent' => 'parent',
         'path_to_root' => 'pathToRoot',
         'title' => 'title',
-        'two_factor_required' => 'twoFactorRequired'
+        'two_factor_required' => 'twoFactorRequired',
+        'web_app_enabled' => 'webAppEnabled'
     ];
 
     /**
@@ -113,7 +116,8 @@ class Permission implements ModelInterface, ArrayAccess
         'parent' => 'setParent',
         'path_to_root' => 'setPathToRoot',
         'title' => 'setTitle',
-        'two_factor_required' => 'setTwoFactorRequired'
+        'two_factor_required' => 'setTwoFactorRequired',
+        'web_app_enabled' => 'setWebAppEnabled'
     ];
 
     /**
@@ -131,7 +135,8 @@ class Permission implements ModelInterface, ArrayAccess
         'parent' => 'getParent',
         'path_to_root' => 'getPathToRoot',
         'title' => 'getTitle',
-        'two_factor_required' => 'getTwoFactorRequired'
+        'two_factor_required' => 'getTwoFactorRequired',
+        'web_app_enabled' => 'getWebAppEnabled'
     ];
 
     
@@ -171,6 +176,8 @@ class Permission implements ModelInterface, ArrayAccess
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
         
         $this->container['two_factor_required'] = isset($data['two_factor_required']) ? $data['two_factor_required'] : null;
+        
+        $this->container['web_app_enabled'] = isset($data['web_app_enabled']) ? $data['web_app_enabled'] : null;
         
     }
 
@@ -276,7 +283,7 @@ class Permission implements ModelInterface, ArrayAccess
     /**
      * Sets description
      *
-     * @param map[string,string] $description 
+     * @param map[string,string] $description The localized description of the object.
      *
      * @return $this
      */
@@ -301,7 +308,7 @@ class Permission implements ModelInterface, ArrayAccess
     /**
      * Sets feature
      *
-     * @param int $feature 
+     * @param int $feature The feature that this permission belongs to.
      *
      * @return $this
      */
@@ -326,7 +333,7 @@ class Permission implements ModelInterface, ArrayAccess
     /**
      * Sets group
      *
-     * @param bool $group 
+     * @param bool $group Whether this is a permission group.
      *
      * @return $this
      */
@@ -351,7 +358,7 @@ class Permission implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
+     * @param int $id A unique identifier for the object.
      *
      * @return $this
      */
@@ -376,7 +383,7 @@ class Permission implements ModelInterface, ArrayAccess
     /**
      * Sets leaf
      *
-     * @param bool $leaf 
+     * @param bool $leaf Whether this is a leaf in the tree of permissions, and not a group.
      *
      * @return $this
      */
@@ -401,7 +408,7 @@ class Permission implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param map[string,string] $name 
+     * @param map[string,string] $name The localized name of the object.
      *
      * @return $this
      */
@@ -426,7 +433,7 @@ class Permission implements ModelInterface, ArrayAccess
     /**
      * Sets parent
      *
-     * @param int $parent 
+     * @param int $parent The group that this permission belongs to.
      *
      * @return $this
      */
@@ -451,7 +458,7 @@ class Permission implements ModelInterface, ArrayAccess
     /**
      * Sets path_to_root
      *
-     * @param int[] $path_to_root 
+     * @param int[] $path_to_root All parents of this permission up to the root of the permission tree.
      *
      * @return $this
      */
@@ -476,7 +483,7 @@ class Permission implements ModelInterface, ArrayAccess
     /**
      * Sets title
      *
-     * @param map[string,string] $title 
+     * @param map[string,string] $title The localized name of the object.
      *
      * @return $this
      */
@@ -501,13 +508,38 @@ class Permission implements ModelInterface, ArrayAccess
     /**
      * Sets two_factor_required
      *
-     * @param bool $two_factor_required 
+     * @param bool $two_factor_required Whether users with this permission are required to enable two-factor authentication.
      *
      * @return $this
      */
     public function setTwoFactorRequired($two_factor_required)
     {
         $this->container['two_factor_required'] = $two_factor_required;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets web_app_enabled
+     *
+     * @return bool
+     */
+    public function getWebAppEnabled()
+    {
+        return $this->container['web_app_enabled'];
+    }
+
+    /**
+     * Sets web_app_enabled
+     *
+     * @param bool $web_app_enabled 
+     *
+     * @return $this
+     */
+    public function setWebAppEnabled($web_app_enabled)
+    {
+        $this->container['web_app_enabled'] = $web_app_enabled;
 
         return $this;
     }

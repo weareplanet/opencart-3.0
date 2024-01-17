@@ -29,7 +29,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @category    Class
  * @description 
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class PaymentContract implements ModelInterface, ArrayAccess
@@ -217,14 +217,6 @@ class PaymentContract implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if (!is_null($this->container['external_id']) && (mb_strlen($this->container['external_id']) > 100)) {
-            $invalidProperties[] = "invalid value for 'external_id', the character length must be smaller than or equal to 100.";
-        }
-
-        if (!is_null($this->container['external_id']) && (mb_strlen($this->container['external_id']) < 1)) {
-            $invalidProperties[] = "invalid value for 'external_id', the character length must be bigger than or equal to 1.";
-        }
 
         return $invalidProperties;
     }
@@ -444,7 +436,7 @@ class PaymentContract implements ModelInterface, ArrayAccess
     /**
      * Sets created_on
      *
-     * @param \DateTime $created_on The created on date indicates the date on which the entity was stored into the database.
+     * @param \DateTime $created_on The date and time when the object was created.
      *
      * @return $this
      */
@@ -469,19 +461,12 @@ class PaymentContract implements ModelInterface, ArrayAccess
     /**
      * Sets external_id
      *
-     * @param string $external_id The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
+     * @param string $external_id A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
      *
      * @return $this
      */
     public function setExternalId($external_id)
     {
-        if (!is_null($external_id) && (mb_strlen($external_id) > 100)) {
-            throw new \InvalidArgumentException('invalid length for $external_id when calling PaymentContract., must be smaller than or equal to 100.');
-        }
-        if (!is_null($external_id) && (mb_strlen($external_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $external_id when calling PaymentContract., must be bigger than or equal to 1.');
-        }
-
         $this->container['external_id'] = $external_id;
 
         return $this;
@@ -501,7 +486,7 @@ class PaymentContract implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
+     * @param int $id A unique identifier for the object.
      *
      * @return $this
      */
@@ -601,7 +586,7 @@ class PaymentContract implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param \WeArePlanet\Sdk\Model\PaymentContractState $state 
+     * @param \WeArePlanet\Sdk\Model\PaymentContractState $state The object's current state.
      *
      * @return $this
      */
@@ -676,7 +661,7 @@ class PaymentContract implements ModelInterface, ArrayAccess
     /**
      * Sets version
      *
-     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+     * @param int $version The version is used for optimistic locking and incremented whenever the object is updated.
      *
      * @return $this
      */

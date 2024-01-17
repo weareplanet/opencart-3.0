@@ -29,7 +29,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @category    Class
  * @description 
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class PaymentTerminal implements ModelInterface, ArrayAccess
@@ -50,6 +50,9 @@ class PaymentTerminal implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'configuration_version' => '\WeArePlanet\Sdk\Model\PaymentTerminalConfigurationVersion',
+        'default_currency' => 'string',
+        'device_serial_number' => 'string',
+        'external_id' => 'string',
         'id' => 'int',
         'identifier' => 'string',
         'linked_space_id' => 'int',
@@ -68,6 +71,9 @@ class PaymentTerminal implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'configuration_version' => null,
+        'default_currency' => null,
+        'device_serial_number' => null,
+        'external_id' => null,
         'id' => 'int64',
         'identifier' => null,
         'linked_space_id' => 'int64',
@@ -87,6 +93,9 @@ class PaymentTerminal implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'configuration_version' => 'configurationVersion',
+        'default_currency' => 'defaultCurrency',
+        'device_serial_number' => 'deviceSerialNumber',
+        'external_id' => 'externalId',
         'id' => 'id',
         'identifier' => 'identifier',
         'linked_space_id' => 'linkedSpaceId',
@@ -105,6 +114,9 @@ class PaymentTerminal implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'configuration_version' => 'setConfigurationVersion',
+        'default_currency' => 'setDefaultCurrency',
+        'device_serial_number' => 'setDeviceSerialNumber',
+        'external_id' => 'setExternalId',
         'id' => 'setId',
         'identifier' => 'setIdentifier',
         'linked_space_id' => 'setLinkedSpaceId',
@@ -123,6 +135,9 @@ class PaymentTerminal implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'configuration_version' => 'getConfigurationVersion',
+        'default_currency' => 'getDefaultCurrency',
+        'device_serial_number' => 'getDeviceSerialNumber',
+        'external_id' => 'getExternalId',
         'id' => 'getId',
         'identifier' => 'getIdentifier',
         'linked_space_id' => 'getLinkedSpaceId',
@@ -153,6 +168,12 @@ class PaymentTerminal implements ModelInterface, ArrayAccess
     {
         
         $this->container['configuration_version'] = isset($data['configuration_version']) ? $data['configuration_version'] : null;
+        
+        $this->container['default_currency'] = isset($data['default_currency']) ? $data['default_currency'] : null;
+        
+        $this->container['device_serial_number'] = isset($data['device_serial_number']) ? $data['device_serial_number'] : null;
+        
+        $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
         
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         
@@ -293,6 +314,81 @@ class PaymentTerminal implements ModelInterface, ArrayAccess
     
 
     /**
+     * Gets default_currency
+     *
+     * @return string
+     */
+    public function getDefaultCurrency()
+    {
+        return $this->container['default_currency'];
+    }
+
+    /**
+     * Sets default_currency
+     *
+     * @param string $default_currency 
+     *
+     * @return $this
+     */
+    public function setDefaultCurrency($default_currency)
+    {
+        $this->container['default_currency'] = $default_currency;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets device_serial_number
+     *
+     * @return string
+     */
+    public function getDeviceSerialNumber()
+    {
+        return $this->container['device_serial_number'];
+    }
+
+    /**
+     * Sets device_serial_number
+     *
+     * @param string $device_serial_number 
+     *
+     * @return $this
+     */
+    public function setDeviceSerialNumber($device_serial_number)
+    {
+        $this->container['device_serial_number'] = $device_serial_number;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets external_id
+     *
+     * @return string
+     */
+    public function getExternalId()
+    {
+        return $this->container['external_id'];
+    }
+
+    /**
+     * Sets external_id
+     *
+     * @param string $external_id A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+     *
+     * @return $this
+     */
+    public function setExternalId($external_id)
+    {
+        $this->container['external_id'] = $external_id;
+
+        return $this;
+    }
+    
+
+    /**
      * Gets id
      *
      * @return int
@@ -305,7 +401,7 @@ class PaymentTerminal implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
+     * @param int $id A unique identifier for the object.
      *
      * @return $this
      */
@@ -355,7 +451,7 @@ class PaymentTerminal implements ModelInterface, ArrayAccess
     /**
      * Sets linked_space_id
      *
-     * @param int $linked_space_id The linked space id holds the ID of the space to which the entity belongs to.
+     * @param int $linked_space_id The ID of the space this object belongs to.
      *
      * @return $this
      */
@@ -434,7 +530,7 @@ class PaymentTerminal implements ModelInterface, ArrayAccess
     /**
      * Sets planned_purge_date
      *
-     * @param \DateTime $planned_purge_date The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+     * @param \DateTime $planned_purge_date The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
      *
      * @return $this
      */
@@ -459,7 +555,7 @@ class PaymentTerminal implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param \WeArePlanet\Sdk\Model\PaymentTerminalState $state 
+     * @param \WeArePlanet\Sdk\Model\PaymentTerminalState $state The object's current state.
      *
      * @return $this
      */
@@ -509,7 +605,7 @@ class PaymentTerminal implements ModelInterface, ArrayAccess
     /**
      * Sets version
      *
-     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+     * @param int $version The version is used for optimistic locking and incremented whenever the object is updated.
      *
      * @return $this
      */

@@ -27,7 +27,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @category    Class
  * @description 
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class TransactionCompletion extends TransactionAwareEntity 
@@ -70,6 +70,7 @@ class TransactionCompletion extends TransactionAwareEntity
         'remaining_line_items' => '\WeArePlanet\Sdk\Model\LineItem[]',
         'space_view_id' => 'int',
         'state' => '\WeArePlanet\Sdk\Model\TransactionCompletionState',
+        'statement_descriptor' => 'string',
         'succeeded_on' => '\DateTime',
         'tax_amount' => 'float',
         'time_zone' => 'string',
@@ -106,6 +107,7 @@ class TransactionCompletion extends TransactionAwareEntity
         'remaining_line_items' => null,
         'space_view_id' => 'int64',
         'state' => null,
+        'statement_descriptor' => null,
         'succeeded_on' => 'date-time',
         'tax_amount' => null,
         'time_zone' => null,
@@ -143,6 +145,7 @@ class TransactionCompletion extends TransactionAwareEntity
         'remaining_line_items' => 'remainingLineItems',
         'space_view_id' => 'spaceViewId',
         'state' => 'state',
+        'statement_descriptor' => 'statementDescriptor',
         'succeeded_on' => 'succeededOn',
         'tax_amount' => 'taxAmount',
         'time_zone' => 'timeZone',
@@ -179,6 +182,7 @@ class TransactionCompletion extends TransactionAwareEntity
         'remaining_line_items' => 'setRemainingLineItems',
         'space_view_id' => 'setSpaceViewId',
         'state' => 'setState',
+        'statement_descriptor' => 'setStatementDescriptor',
         'succeeded_on' => 'setSucceededOn',
         'tax_amount' => 'setTaxAmount',
         'time_zone' => 'setTimeZone',
@@ -215,6 +219,7 @@ class TransactionCompletion extends TransactionAwareEntity
         'remaining_line_items' => 'getRemainingLineItems',
         'space_view_id' => 'getSpaceViewId',
         'state' => 'getState',
+        'statement_descriptor' => 'getStatementDescriptor',
         'succeeded_on' => 'getSucceededOn',
         'tax_amount' => 'getTaxAmount',
         'time_zone' => 'getTimeZone',
@@ -282,6 +287,8 @@ class TransactionCompletion extends TransactionAwareEntity
         
         $this->container['state'] = isset($data['state']) ? $data['state'] : null;
         
+        $this->container['statement_descriptor'] = isset($data['statement_descriptor']) ? $data['statement_descriptor'] : null;
+        
         $this->container['succeeded_on'] = isset($data['succeeded_on']) ? $data['succeeded_on'] : null;
         
         $this->container['tax_amount'] = isset($data['tax_amount']) ? $data['tax_amount'] : null;
@@ -313,6 +320,10 @@ class TransactionCompletion extends TransactionAwareEntity
 
         if (!is_null($this->container['invoice_merchant_reference']) && (mb_strlen($this->container['invoice_merchant_reference']) > 100)) {
             $invalidProperties[] = "invalid value for 'invoice_merchant_reference', the character length must be smaller than or equal to 100.";
+        }
+
+        if (!is_null($this->container['statement_descriptor']) && (mb_strlen($this->container['statement_descriptor']) > 80)) {
+            $invalidProperties[] = "invalid value for 'statement_descriptor', the character length must be smaller than or equal to 80.";
         }
 
         return $invalidProperties;
@@ -483,7 +494,7 @@ class TransactionCompletion extends TransactionAwareEntity
     /**
      * Sets created_on
      *
-     * @param \DateTime $created_on The created on date indicates the date on which the entity was stored into the database.
+     * @param \DateTime $created_on The date and time when the object was created.
      *
      * @return $this
      */
@@ -644,7 +655,7 @@ class TransactionCompletion extends TransactionAwareEntity
     /**
      * Sets language
      *
-     * @param string $language 
+     * @param string $language The language that is linked to the object.
      *
      * @return $this
      */
@@ -744,7 +755,7 @@ class TransactionCompletion extends TransactionAwareEntity
     /**
      * Sets linked_space_id
      *
-     * @param int $linked_space_id The linked space id holds the ID of the space to which the entity belongs to.
+     * @param int $linked_space_id The ID of the space this object belongs to.
      *
      * @return $this
      */
@@ -844,7 +855,7 @@ class TransactionCompletion extends TransactionAwareEntity
     /**
      * Sets planned_purge_date
      *
-     * @param \DateTime $planned_purge_date The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+     * @param \DateTime $planned_purge_date The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
      *
      * @return $this
      */
@@ -969,13 +980,42 @@ class TransactionCompletion extends TransactionAwareEntity
     /**
      * Sets state
      *
-     * @param \WeArePlanet\Sdk\Model\TransactionCompletionState $state 
+     * @param \WeArePlanet\Sdk\Model\TransactionCompletionState $state The object's current state.
      *
      * @return $this
      */
     public function setState($state)
     {
         $this->container['state'] = $state;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets statement_descriptor
+     *
+     * @return string
+     */
+    public function getStatementDescriptor()
+    {
+        return $this->container['statement_descriptor'];
+    }
+
+    /**
+     * Sets statement_descriptor
+     *
+     * @param string $statement_descriptor The statement descriptor explain charges or payments on bank statements.
+     *
+     * @return $this
+     */
+    public function setStatementDescriptor($statement_descriptor)
+    {
+        if (!is_null($statement_descriptor) && (mb_strlen($statement_descriptor) > 80)) {
+            throw new \InvalidArgumentException('invalid length for $statement_descriptor when calling TransactionCompletion., must be smaller than or equal to 80.');
+        }
+
+        $this->container['statement_descriptor'] = $statement_descriptor;
 
         return $this;
     }
@@ -1094,7 +1134,7 @@ class TransactionCompletion extends TransactionAwareEntity
     /**
      * Sets version
      *
-     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+     * @param int $version The version is used for optimistic locking and incremented whenever the object is updated.
      *
      * @return $this
      */

@@ -27,7 +27,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @category    Class
  * @description 
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class LineItemType
@@ -39,6 +39,7 @@ class LineItemType
     const DISCOUNT = 'DISCOUNT';
     const FEE = 'FEE';
     const PRODUCT = 'PRODUCT';
+    const TIP = 'TIP';
     
     /**
      * Gets allowable values of the enum
@@ -51,6 +52,7 @@ class LineItemType
             self::DISCOUNT,
             self::FEE,
             self::PRODUCT,
+            self::TIP,
         ];
     }
 }

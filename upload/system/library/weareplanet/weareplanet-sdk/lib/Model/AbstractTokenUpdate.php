@@ -28,7 +28,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  *
  * @category    Class
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class AbstractTokenUpdate implements ModelInterface, ArrayAccess
@@ -334,7 +334,7 @@ class AbstractTokenUpdate implements ModelInterface, ArrayAccess
     /**
      * Sets language
      *
-     * @param string $language 
+     * @param string $language The language that is linked to the object.
      *
      * @return $this
      */

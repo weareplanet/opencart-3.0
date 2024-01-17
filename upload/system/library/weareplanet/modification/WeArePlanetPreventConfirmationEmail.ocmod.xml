@@ -3,7 +3,7 @@
 	<code>WeArePlanetPreventConfirmationEmail</code>
 	<name>weareplanet email: prevent confirmation email.</name>
 	<version>1.0.1</version>
-	<author>Customweb GmbH</author>
+	<author>Planet Merchant Services Ltd</author>
 	<link>http://github.com/weareplanet-payment/opencart</link>
 	<file path="catalog/model/checkout/order.php">
 		<operation>

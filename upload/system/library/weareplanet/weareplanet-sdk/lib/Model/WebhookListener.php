@@ -29,7 +29,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @category    Class
  * @description 
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class WebhookListener implements ModelInterface, ArrayAccess
@@ -287,7 +287,7 @@ class WebhookListener implements ModelInterface, ArrayAccess
     /**
      * Sets entity
      *
-     * @param int $entity The listener listens on state changes of the entity linked with the listener.
+     * @param int $entity The entity that is to be monitored.
      *
      * @return $this
      */
@@ -312,7 +312,7 @@ class WebhookListener implements ModelInterface, ArrayAccess
     /**
      * Sets entity_states
      *
-     * @param string[] $entity_states The target state identifies the state into which entities need to move into to trigger the webhook listener.
+     * @param string[] $entity_states The entity's target states that are to be monitored.
      *
      * @return $this
      */
@@ -337,7 +337,7 @@ class WebhookListener implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
+     * @param int $id A unique identifier for the object.
      *
      * @return $this
      */
@@ -362,7 +362,7 @@ class WebhookListener implements ModelInterface, ArrayAccess
     /**
      * Sets identity
      *
-     * @param \WeArePlanet\Sdk\Model\WebhookIdentity $identity The identity which will be used to sign messages sent by this listener.
+     * @param \WeArePlanet\Sdk\Model\WebhookIdentity $identity The identity used to sign messages.
      *
      * @return $this
      */
@@ -387,7 +387,7 @@ class WebhookListener implements ModelInterface, ArrayAccess
     /**
      * Sets linked_space_id
      *
-     * @param int $linked_space_id The linked space id holds the ID of the space to which the entity belongs to.
+     * @param int $linked_space_id The ID of the space this object belongs to.
      *
      * @return $this
      */
@@ -412,7 +412,7 @@ class WebhookListener implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name The webhook listener name is used internally to identify the webhook listener in administrative interfaces.For example it is used within search fields and hence it should be distinct and descriptive.
+     * @param string $name The name used to identify the webhook listener.
      *
      * @return $this
      */
@@ -441,7 +441,7 @@ class WebhookListener implements ModelInterface, ArrayAccess
     /**
      * Sets notify_every_change
      *
-     * @param bool $notify_every_change Defines whether the webhook listener is to be informed about every change made to the entity in contrast to state transitions only.
+     * @param bool $notify_every_change Whether every update of the entity or only state changes are to be monitored.
      *
      * @return $this
      */
@@ -466,7 +466,7 @@ class WebhookListener implements ModelInterface, ArrayAccess
     /**
      * Sets planned_purge_date
      *
-     * @param \DateTime $planned_purge_date The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+     * @param \DateTime $planned_purge_date The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
      *
      * @return $this
      */
@@ -491,7 +491,7 @@ class WebhookListener implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param \WeArePlanet\Sdk\Model\CreationEntityState $state 
+     * @param \WeArePlanet\Sdk\Model\CreationEntityState $state The object's current state.
      *
      * @return $this
      */
@@ -516,7 +516,7 @@ class WebhookListener implements ModelInterface, ArrayAccess
     /**
      * Sets url
      *
-     * @param \WeArePlanet\Sdk\Model\WebhookUrl $url The URL which is invoked by the listener to notify the application about the event.
+     * @param \WeArePlanet\Sdk\Model\WebhookUrl $url The URL where notifications about entity changes are sent to.
      *
      * @return $this
      */
@@ -541,7 +541,7 @@ class WebhookListener implements ModelInterface, ArrayAccess
     /**
      * Sets version
      *
-     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+     * @param int $version The version is used for optimistic locking and incremented whenever the object is updated.
      *
      * @return $this
      */

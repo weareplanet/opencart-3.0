@@ -29,7 +29,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @category    Class
  * @description 
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class TransactionComment implements ModelInterface, ArrayAccess
@@ -280,7 +280,7 @@ class TransactionComment implements ModelInterface, ArrayAccess
     /**
      * Sets content
      *
-     * @param string $content 
+     * @param string $content The comment's actual content.
      *
      * @return $this
      */
@@ -309,7 +309,7 @@ class TransactionComment implements ModelInterface, ArrayAccess
     /**
      * Sets created_by
      *
-     * @param int $created_by 
+     * @param int $created_by The ID of the user the comment was created by.
      *
      * @return $this
      */
@@ -334,7 +334,7 @@ class TransactionComment implements ModelInterface, ArrayAccess
     /**
      * Sets created_on
      *
-     * @param \DateTime $created_on The created on date indicates the date on which the entity was stored into the database.
+     * @param \DateTime $created_on The date and time when the object was created.
      *
      * @return $this
      */
@@ -359,7 +359,7 @@ class TransactionComment implements ModelInterface, ArrayAccess
     /**
      * Sets edited_by
      *
-     * @param int $edited_by 
+     * @param int $edited_by The ID of the user the comment was last updated by.
      *
      * @return $this
      */
@@ -384,7 +384,7 @@ class TransactionComment implements ModelInterface, ArrayAccess
     /**
      * Sets edited_on
      *
-     * @param \DateTime $edited_on The date on which the comment was last edited.
+     * @param \DateTime $edited_on The date and time when the comment was last updated.
      *
      * @return $this
      */
@@ -409,7 +409,7 @@ class TransactionComment implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
+     * @param int $id A unique identifier for the object.
      *
      * @return $this
      */
@@ -434,7 +434,7 @@ class TransactionComment implements ModelInterface, ArrayAccess
     /**
      * Sets linked_space_id
      *
-     * @param int $linked_space_id The linked space id holds the ID of the space to which the entity belongs to.
+     * @param int $linked_space_id The ID of the space this object belongs to.
      *
      * @return $this
      */
@@ -459,7 +459,7 @@ class TransactionComment implements ModelInterface, ArrayAccess
     /**
      * Sets pinned
      *
-     * @param bool $pinned 
+     * @param bool $pinned Whether the comment is pinned to the top.
      *
      * @return $this
      */
@@ -509,7 +509,7 @@ class TransactionComment implements ModelInterface, ArrayAccess
     /**
      * Sets version
      *
-     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+     * @param int $version The version is used for optimistic locking and incremented whenever the object is updated.
      *
      * @return $this
      */

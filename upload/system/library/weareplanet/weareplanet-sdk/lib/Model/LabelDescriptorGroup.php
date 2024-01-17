@@ -29,7 +29,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @category    Class
  * @description 
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class LabelDescriptorGroup implements ModelInterface, ArrayAccess
@@ -234,7 +234,7 @@ class LabelDescriptorGroup implements ModelInterface, ArrayAccess
     /**
      * Sets description
      *
-     * @param map[string,string] $description 
+     * @param map[string,string] $description The localized description of the object.
      *
      * @return $this
      */
@@ -259,7 +259,7 @@ class LabelDescriptorGroup implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
+     * @param int $id A unique identifier for the object.
      *
      * @return $this
      */
@@ -284,7 +284,7 @@ class LabelDescriptorGroup implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param map[string,string] $name 
+     * @param map[string,string] $name The localized name of the object.
      *
      * @return $this
      */
@@ -309,7 +309,7 @@ class LabelDescriptorGroup implements ModelInterface, ArrayAccess
     /**
      * Sets weight
      *
-     * @param int $weight 
+     * @param int $weight When listing label groups, they can be sorted by this number.
      *
      * @return $this
      */

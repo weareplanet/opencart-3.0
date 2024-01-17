@@ -30,7 +30,7 @@ use WeArePlanet\Sdk\Http\HttpClientFactory;
  *
  * @category Class
  * @package  WeArePlanet\Sdk
- * @author   customweb GmbH
+ * @author   Planet Merchant Services Ltd.
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 final class ApiClient {
@@ -572,18 +572,6 @@ final class ApiClient {
         return $this->applicationUserService;
     }
     
-    protected $cardProcessingService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\CardProcessingService
-     */
-    public function getCardProcessingService() {
-        if(is_null($this->cardProcessingService)){
-            $this->cardProcessingService = new \WeArePlanet\Sdk\Service\CardProcessingService($this);
-        }
-        return $this->cardProcessingService;
-    }
-    
     protected $chargeAttemptService;
 
     /**
@@ -716,42 +704,6 @@ final class ApiClient {
         return $this->customerService;
     }
     
-    protected $debtCollectionCaseService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\DebtCollectionCaseService
-     */
-    public function getDebtCollectionCaseService() {
-        if(is_null($this->debtCollectionCaseService)){
-            $this->debtCollectionCaseService = new \WeArePlanet\Sdk\Service\DebtCollectionCaseService($this);
-        }
-        return $this->debtCollectionCaseService;
-    }
-    
-    protected $debtCollectorConfigurationService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\DebtCollectorConfigurationService
-     */
-    public function getDebtCollectorConfigurationService() {
-        if(is_null($this->debtCollectorConfigurationService)){
-            $this->debtCollectorConfigurationService = new \WeArePlanet\Sdk\Service\DebtCollectorConfigurationService($this);
-        }
-        return $this->debtCollectorConfigurationService;
-    }
-    
-    protected $debtCollectorService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\DebtCollectorService
-     */
-    public function getDebtCollectorService() {
-        if(is_null($this->debtCollectorService)){
-            $this->debtCollectorService = new \WeArePlanet\Sdk\Service\DebtCollectorService($this);
-        }
-        return $this->debtCollectorService;
-    }
-    
     protected $deliveryIndicationService;
 
     /**
@@ -764,30 +716,6 @@ final class ApiClient {
         return $this->deliveryIndicationService;
     }
     
-    protected $documentTemplateService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\DocumentTemplateService
-     */
-    public function getDocumentTemplateService() {
-        if(is_null($this->documentTemplateService)){
-            $this->documentTemplateService = new \WeArePlanet\Sdk\Service\DocumentTemplateService($this);
-        }
-        return $this->documentTemplateService;
-    }
-    
-    protected $documentTemplateTypeService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\DocumentTemplateTypeService
-     */
-    public function getDocumentTemplateTypeService() {
-        if(is_null($this->documentTemplateTypeService)){
-            $this->documentTemplateTypeService = new \WeArePlanet\Sdk\Service\DocumentTemplateTypeService($this);
-        }
-        return $this->documentTemplateTypeService;
-    }
-    
     protected $humanUserService;
 
     /**
@@ -798,66 +726,6 @@ final class ApiClient {
             $this->humanUserService = new \WeArePlanet\Sdk\Service\HumanUserService($this);
         }
         return $this->humanUserService;
-    }
-    
-    protected $installmentPaymentService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\InstallmentPaymentService
-     */
-    public function getInstallmentPaymentService() {
-        if(is_null($this->installmentPaymentService)){
-            $this->installmentPaymentService = new \WeArePlanet\Sdk\Service\InstallmentPaymentService($this);
-        }
-        return $this->installmentPaymentService;
-    }
-    
-    protected $installmentPaymentSliceService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\InstallmentPaymentSliceService
-     */
-    public function getInstallmentPaymentSliceService() {
-        if(is_null($this->installmentPaymentSliceService)){
-            $this->installmentPaymentSliceService = new \WeArePlanet\Sdk\Service\InstallmentPaymentSliceService($this);
-        }
-        return $this->installmentPaymentSliceService;
-    }
-    
-    protected $installmentPlanCalculationService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\InstallmentPlanCalculationService
-     */
-    public function getInstallmentPlanCalculationService() {
-        if(is_null($this->installmentPlanCalculationService)){
-            $this->installmentPlanCalculationService = new \WeArePlanet\Sdk\Service\InstallmentPlanCalculationService($this);
-        }
-        return $this->installmentPlanCalculationService;
-    }
-    
-    protected $installmentPlanConfigurationService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\InstallmentPlanConfigurationService
-     */
-    public function getInstallmentPlanConfigurationService() {
-        if(is_null($this->installmentPlanConfigurationService)){
-            $this->installmentPlanConfigurationService = new \WeArePlanet\Sdk\Service\InstallmentPlanConfigurationService($this);
-        }
-        return $this->installmentPlanConfigurationService;
-    }
-    
-    protected $installmentPlanSliceConfigurationService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\InstallmentPlanSliceConfigurationService
-     */
-    public function getInstallmentPlanSliceConfigurationService() {
-        if(is_null($this->installmentPlanSliceConfigurationService)){
-            $this->installmentPlanSliceConfigurationService = new \WeArePlanet\Sdk\Service\InstallmentPlanSliceConfigurationService($this);
-        }
-        return $this->installmentPlanSliceConfigurationService;
     }
     
     protected $labelDescriptionGroupService;
@@ -920,18 +788,6 @@ final class ApiClient {
         return $this->manualTaskService;
     }
     
-    protected $merticUsageService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\MerticUsageService
-     */
-    public function getMerticUsageService() {
-        if(is_null($this->merticUsageService)){
-            $this->merticUsageService = new \WeArePlanet\Sdk\Service\MerticUsageService($this);
-        }
-        return $this->merticUsageService;
-    }
-    
     protected $paymentConnectorConfigurationService;
 
     /**
@@ -954,18 +810,6 @@ final class ApiClient {
             $this->paymentConnectorService = new \WeArePlanet\Sdk\Service\PaymentConnectorService($this);
         }
         return $this->paymentConnectorService;
-    }
-    
-    protected $paymentLinkService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\PaymentLinkService
-     */
-    public function getPaymentLinkService() {
-        if(is_null($this->paymentLinkService)){
-            $this->paymentLinkService = new \WeArePlanet\Sdk\Service\PaymentLinkService($this);
-        }
-        return $this->paymentLinkService;
     }
     
     protected $paymentMethodBrandService;
@@ -1028,28 +872,16 @@ final class ApiClient {
         return $this->paymentProcessorService;
     }
     
-    protected $paymentTerminalService;
+    protected $paymentWebAppService;
 
     /**
-     * @return \WeArePlanet\Sdk\Service\PaymentTerminalService
+     * @return \WeArePlanet\Sdk\Service\PaymentWebAppService
      */
-    public function getPaymentTerminalService() {
-        if(is_null($this->paymentTerminalService)){
-            $this->paymentTerminalService = new \WeArePlanet\Sdk\Service\PaymentTerminalService($this);
+    public function getPaymentWebAppService() {
+        if(is_null($this->paymentWebAppService)){
+            $this->paymentWebAppService = new \WeArePlanet\Sdk\Service\PaymentWebAppService($this);
         }
-        return $this->paymentTerminalService;
-    }
-    
-    protected $paymentTerminalTillService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\PaymentTerminalTillService
-     */
-    public function getPaymentTerminalTillService() {
-        if(is_null($this->paymentTerminalTillService)){
-            $this->paymentTerminalTillService = new \WeArePlanet\Sdk\Service\PaymentTerminalTillService($this);
-        }
-        return $this->paymentTerminalTillService;
+        return $this->paymentWebAppService;
     }
     
     protected $permissionService;
@@ -1088,90 +920,6 @@ final class ApiClient {
         return $this->refundService;
     }
     
-    protected $shopifyRecurringOrderService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\ShopifyRecurringOrderService
-     */
-    public function getShopifyRecurringOrderService() {
-        if(is_null($this->shopifyRecurringOrderService)){
-            $this->shopifyRecurringOrderService = new \WeArePlanet\Sdk\Service\ShopifyRecurringOrderService($this);
-        }
-        return $this->shopifyRecurringOrderService;
-    }
-    
-    protected $shopifySubscriberService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\ShopifySubscriberService
-     */
-    public function getShopifySubscriberService() {
-        if(is_null($this->shopifySubscriberService)){
-            $this->shopifySubscriberService = new \WeArePlanet\Sdk\Service\ShopifySubscriberService($this);
-        }
-        return $this->shopifySubscriberService;
-    }
-    
-    protected $shopifySubscriptionProductService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\ShopifySubscriptionProductService
-     */
-    public function getShopifySubscriptionProductService() {
-        if(is_null($this->shopifySubscriptionProductService)){
-            $this->shopifySubscriptionProductService = new \WeArePlanet\Sdk\Service\ShopifySubscriptionProductService($this);
-        }
-        return $this->shopifySubscriptionProductService;
-    }
-    
-    protected $shopifySubscriptionService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\ShopifySubscriptionService
-     */
-    public function getShopifySubscriptionService() {
-        if(is_null($this->shopifySubscriptionService)){
-            $this->shopifySubscriptionService = new \WeArePlanet\Sdk\Service\ShopifySubscriptionService($this);
-        }
-        return $this->shopifySubscriptionService;
-    }
-    
-    protected $shopifySubscriptionSuspensionService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\ShopifySubscriptionSuspensionService
-     */
-    public function getShopifySubscriptionSuspensionService() {
-        if(is_null($this->shopifySubscriptionSuspensionService)){
-            $this->shopifySubscriptionSuspensionService = new \WeArePlanet\Sdk\Service\ShopifySubscriptionSuspensionService($this);
-        }
-        return $this->shopifySubscriptionSuspensionService;
-    }
-    
-    protected $shopifySubscriptionVersionService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\ShopifySubscriptionVersionService
-     */
-    public function getShopifySubscriptionVersionService() {
-        if(is_null($this->shopifySubscriptionVersionService)){
-            $this->shopifySubscriptionVersionService = new \WeArePlanet\Sdk\Service\ShopifySubscriptionVersionService($this);
-        }
-        return $this->shopifySubscriptionVersionService;
-    }
-    
-    protected $shopifyTransactionService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\ShopifyTransactionService
-     */
-    public function getShopifyTransactionService() {
-        if(is_null($this->shopifyTransactionService)){
-            $this->shopifyTransactionService = new \WeArePlanet\Sdk\Service\ShopifyTransactionService($this);
-        }
-        return $this->shopifyTransactionService;
-    }
-    
     protected $spaceService;
 
     /**
@@ -1194,246 +942,6 @@ final class ApiClient {
             $this->staticValueService = new \WeArePlanet\Sdk\Service\StaticValueService($this);
         }
         return $this->staticValueService;
-    }
-    
-    protected $subscriberService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriberService
-     */
-    public function getSubscriberService() {
-        if(is_null($this->subscriberService)){
-            $this->subscriberService = new \WeArePlanet\Sdk\Service\SubscriberService($this);
-        }
-        return $this->subscriberService;
-    }
-    
-    protected $subscriptionAffiliateService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionAffiliateService
-     */
-    public function getSubscriptionAffiliateService() {
-        if(is_null($this->subscriptionAffiliateService)){
-            $this->subscriptionAffiliateService = new \WeArePlanet\Sdk\Service\SubscriptionAffiliateService($this);
-        }
-        return $this->subscriptionAffiliateService;
-    }
-    
-    protected $subscriptionChargeService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionChargeService
-     */
-    public function getSubscriptionChargeService() {
-        if(is_null($this->subscriptionChargeService)){
-            $this->subscriptionChargeService = new \WeArePlanet\Sdk\Service\SubscriptionChargeService($this);
-        }
-        return $this->subscriptionChargeService;
-    }
-    
-    protected $subscriptionLedgerEntryService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionLedgerEntryService
-     */
-    public function getSubscriptionLedgerEntryService() {
-        if(is_null($this->subscriptionLedgerEntryService)){
-            $this->subscriptionLedgerEntryService = new \WeArePlanet\Sdk\Service\SubscriptionLedgerEntryService($this);
-        }
-        return $this->subscriptionLedgerEntryService;
-    }
-    
-    protected $subscriptionMetricService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionMetricService
-     */
-    public function getSubscriptionMetricService() {
-        if(is_null($this->subscriptionMetricService)){
-            $this->subscriptionMetricService = new \WeArePlanet\Sdk\Service\SubscriptionMetricService($this);
-        }
-        return $this->subscriptionMetricService;
-    }
-    
-    protected $subscriptionMetricUsageService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionMetricUsageService
-     */
-    public function getSubscriptionMetricUsageService() {
-        if(is_null($this->subscriptionMetricUsageService)){
-            $this->subscriptionMetricUsageService = new \WeArePlanet\Sdk\Service\SubscriptionMetricUsageService($this);
-        }
-        return $this->subscriptionMetricUsageService;
-    }
-    
-    protected $subscriptionPeriodBillService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionPeriodBillService
-     */
-    public function getSubscriptionPeriodBillService() {
-        if(is_null($this->subscriptionPeriodBillService)){
-            $this->subscriptionPeriodBillService = new \WeArePlanet\Sdk\Service\SubscriptionPeriodBillService($this);
-        }
-        return $this->subscriptionPeriodBillService;
-    }
-    
-    protected $subscriptionProductComponentGroupService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionProductComponentGroupService
-     */
-    public function getSubscriptionProductComponentGroupService() {
-        if(is_null($this->subscriptionProductComponentGroupService)){
-            $this->subscriptionProductComponentGroupService = new \WeArePlanet\Sdk\Service\SubscriptionProductComponentGroupService($this);
-        }
-        return $this->subscriptionProductComponentGroupService;
-    }
-    
-    protected $subscriptionProductComponentService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionProductComponentService
-     */
-    public function getSubscriptionProductComponentService() {
-        if(is_null($this->subscriptionProductComponentService)){
-            $this->subscriptionProductComponentService = new \WeArePlanet\Sdk\Service\SubscriptionProductComponentService($this);
-        }
-        return $this->subscriptionProductComponentService;
-    }
-    
-    protected $subscriptionProductFeeTierService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionProductFeeTierService
-     */
-    public function getSubscriptionProductFeeTierService() {
-        if(is_null($this->subscriptionProductFeeTierService)){
-            $this->subscriptionProductFeeTierService = new \WeArePlanet\Sdk\Service\SubscriptionProductFeeTierService($this);
-        }
-        return $this->subscriptionProductFeeTierService;
-    }
-    
-    protected $subscriptionProductMeteredFeeService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionProductMeteredFeeService
-     */
-    public function getSubscriptionProductMeteredFeeService() {
-        if(is_null($this->subscriptionProductMeteredFeeService)){
-            $this->subscriptionProductMeteredFeeService = new \WeArePlanet\Sdk\Service\SubscriptionProductMeteredFeeService($this);
-        }
-        return $this->subscriptionProductMeteredFeeService;
-    }
-    
-    protected $subscriptionProductPeriodFeeService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionProductPeriodFeeService
-     */
-    public function getSubscriptionProductPeriodFeeService() {
-        if(is_null($this->subscriptionProductPeriodFeeService)){
-            $this->subscriptionProductPeriodFeeService = new \WeArePlanet\Sdk\Service\SubscriptionProductPeriodFeeService($this);
-        }
-        return $this->subscriptionProductPeriodFeeService;
-    }
-    
-    protected $subscriptionProductRetirementService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionProductRetirementService
-     */
-    public function getSubscriptionProductRetirementService() {
-        if(is_null($this->subscriptionProductRetirementService)){
-            $this->subscriptionProductRetirementService = new \WeArePlanet\Sdk\Service\SubscriptionProductRetirementService($this);
-        }
-        return $this->subscriptionProductRetirementService;
-    }
-    
-    protected $subscriptionProductService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionProductService
-     */
-    public function getSubscriptionProductService() {
-        if(is_null($this->subscriptionProductService)){
-            $this->subscriptionProductService = new \WeArePlanet\Sdk\Service\SubscriptionProductService($this);
-        }
-        return $this->subscriptionProductService;
-    }
-    
-    protected $subscriptionProductSetupFeeService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionProductSetupFeeService
-     */
-    public function getSubscriptionProductSetupFeeService() {
-        if(is_null($this->subscriptionProductSetupFeeService)){
-            $this->subscriptionProductSetupFeeService = new \WeArePlanet\Sdk\Service\SubscriptionProductSetupFeeService($this);
-        }
-        return $this->subscriptionProductSetupFeeService;
-    }
-    
-    protected $subscriptionProductVersionRetirementService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionProductVersionRetirementService
-     */
-    public function getSubscriptionProductVersionRetirementService() {
-        if(is_null($this->subscriptionProductVersionRetirementService)){
-            $this->subscriptionProductVersionRetirementService = new \WeArePlanet\Sdk\Service\SubscriptionProductVersionRetirementService($this);
-        }
-        return $this->subscriptionProductVersionRetirementService;
-    }
-    
-    protected $subscriptionProductVersionService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionProductVersionService
-     */
-    public function getSubscriptionProductVersionService() {
-        if(is_null($this->subscriptionProductVersionService)){
-            $this->subscriptionProductVersionService = new \WeArePlanet\Sdk\Service\SubscriptionProductVersionService($this);
-        }
-        return $this->subscriptionProductVersionService;
-    }
-    
-    protected $subscriptionService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionService
-     */
-    public function getSubscriptionService() {
-        if(is_null($this->subscriptionService)){
-            $this->subscriptionService = new \WeArePlanet\Sdk\Service\SubscriptionService($this);
-        }
-        return $this->subscriptionService;
-    }
-    
-    protected $subscriptionSuspensionService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionSuspensionService
-     */
-    public function getSubscriptionSuspensionService() {
-        if(is_null($this->subscriptionSuspensionService)){
-            $this->subscriptionSuspensionService = new \WeArePlanet\Sdk\Service\SubscriptionSuspensionService($this);
-        }
-        return $this->subscriptionSuspensionService;
-    }
-    
-    protected $subscriptionVersionService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SubscriptionVersionService
-     */
-    public function getSubscriptionVersionService() {
-        if(is_null($this->subscriptionVersionService)){
-            $this->subscriptionVersionService = new \WeArePlanet\Sdk\Service\SubscriptionVersionService($this);
-        }
-        return $this->subscriptionVersionService;
     }
     
     protected $tokenService;
@@ -1532,16 +1040,16 @@ final class ApiClient {
         return $this->transactionLightboxService;
     }
     
-    protected $transactionMobileSdkService;
+    protected $transactionLineItemVersionService;
 
     /**
-     * @return \WeArePlanet\Sdk\Service\TransactionMobileSdkService
+     * @return \WeArePlanet\Sdk\Service\TransactionLineItemVersionService
      */
-    public function getTransactionMobileSdkService() {
-        if(is_null($this->transactionMobileSdkService)){
-            $this->transactionMobileSdkService = new \WeArePlanet\Sdk\Service\TransactionMobileSdkService($this);
+    public function getTransactionLineItemVersionService() {
+        if(is_null($this->transactionLineItemVersionService)){
+            $this->transactionLineItemVersionService = new \WeArePlanet\Sdk\Service\TransactionLineItemVersionService($this);
         }
-        return $this->transactionMobileSdkService;
+        return $this->transactionLineItemVersionService;
     }
     
     protected $transactionPaymentPageService;
@@ -1566,18 +1074,6 @@ final class ApiClient {
             $this->transactionService = new \WeArePlanet\Sdk\Service\TransactionService($this);
         }
         return $this->transactionService;
-    }
-    
-    protected $transactionTerminalService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\TransactionTerminalService
-     */
-    public function getTransactionTerminalService() {
-        if(is_null($this->transactionTerminalService)){
-            $this->transactionTerminalService = new \WeArePlanet\Sdk\Service\TransactionTerminalService($this);
-        }
-        return $this->transactionTerminalService;
     }
     
     protected $transactionVoidService;
@@ -1614,6 +1110,18 @@ final class ApiClient {
             $this->userSpaceRoleService = new \WeArePlanet\Sdk\Service\UserSpaceRoleService($this);
         }
         return $this->userSpaceRoleService;
+    }
+    
+    protected $webAppService;
+
+    /**
+     * @return \WeArePlanet\Sdk\Service\WebAppService
+     */
+    public function getWebAppService() {
+        if(is_null($this->webAppService)){
+            $this->webAppService = new \WeArePlanet\Sdk\Service\WebAppService($this);
+        }
+        return $this->webAppService;
     }
     
     protected $webhookListenerService;

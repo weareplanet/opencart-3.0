@@ -27,7 +27,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @category    Class
  * @description 
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class HumanUserCreate extends AbstractHumanUserUpdate 
@@ -207,7 +207,7 @@ class HumanUserCreate extends AbstractHumanUserUpdate
     /**
      * Sets primary_account
      *
-     * @param int $primary_account The primary account links the user to a specific account.
+     * @param int $primary_account The primary account that the user belongs to.
      *
      * @return $this
      */

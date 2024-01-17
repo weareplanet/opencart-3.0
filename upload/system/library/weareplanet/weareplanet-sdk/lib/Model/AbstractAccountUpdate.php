@@ -28,7 +28,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  *
  * @category    Class
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class AbstractAccountUpdate implements ModelInterface, ArrayAccess
@@ -234,7 +234,7 @@ class AbstractAccountUpdate implements ModelInterface, ArrayAccess
     /**
      * Sets last_modified_date
      *
-     * @param \DateTime $last_modified_date 
+     * @param \DateTime $last_modified_date The date and time when the object was last modified.
      *
      * @return $this
      */
@@ -259,7 +259,7 @@ class AbstractAccountUpdate implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name The name of the account identifies the account within the administrative interface.
+     * @param string $name The name used to identify the account.
      *
      * @return $this
      */
@@ -291,7 +291,7 @@ class AbstractAccountUpdate implements ModelInterface, ArrayAccess
     /**
      * Sets subaccount_limit
      *
-     * @param int $subaccount_limit This property restricts the number of subaccounts which can be created within this account.
+     * @param int $subaccount_limit The number of sub-accounts that can be created within this account.
      *
      * @return $this
      */

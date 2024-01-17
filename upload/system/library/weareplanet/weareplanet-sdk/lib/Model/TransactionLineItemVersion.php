@@ -27,7 +27,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @category    Class
  * @description 
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class TransactionLineItemVersion extends TransactionAwareEntity 
@@ -50,12 +50,21 @@ class TransactionLineItemVersion extends TransactionAwareEntity
         'amount' => 'float',
         'created_by' => 'int',
         'created_on' => '\DateTime',
+        'external_id' => 'string',
+        'failed_on' => '\DateTime',
+        'failure_reason' => '\WeArePlanet\Sdk\Model\FailureReason',
+        'labels' => '\WeArePlanet\Sdk\Model\Label[]',
         'language' => 'string',
         'line_items' => '\WeArePlanet\Sdk\Model\LineItem[]',
         'linked_space_id' => 'int',
+        'next_update_on' => '\DateTime',
         'planned_purge_date' => '\DateTime',
+        'processing_on' => '\DateTime',
         'space_view_id' => 'int',
+        'state' => '\WeArePlanet\Sdk\Model\TransactionLineItemVersionState',
+        'succeeded_on' => '\DateTime',
         'tax_amount' => 'float',
+        'timeout_on' => '\DateTime',
         'transaction' => '\WeArePlanet\Sdk\Model\Transaction',
         'version' => 'int'
     ];
@@ -69,12 +78,21 @@ class TransactionLineItemVersion extends TransactionAwareEntity
         'amount' => null,
         'created_by' => 'int64',
         'created_on' => 'date-time',
+        'external_id' => null,
+        'failed_on' => 'date-time',
+        'failure_reason' => null,
+        'labels' => null,
         'language' => null,
         'line_items' => null,
         'linked_space_id' => 'int64',
+        'next_update_on' => 'date-time',
         'planned_purge_date' => 'date-time',
+        'processing_on' => 'date-time',
         'space_view_id' => 'int64',
+        'state' => null,
+        'succeeded_on' => 'date-time',
         'tax_amount' => null,
+        'timeout_on' => 'date-time',
         'transaction' => null,
         'version' => 'int32'
     ];
@@ -89,12 +107,21 @@ class TransactionLineItemVersion extends TransactionAwareEntity
         'amount' => 'amount',
         'created_by' => 'createdBy',
         'created_on' => 'createdOn',
+        'external_id' => 'externalId',
+        'failed_on' => 'failedOn',
+        'failure_reason' => 'failureReason',
+        'labels' => 'labels',
         'language' => 'language',
         'line_items' => 'lineItems',
         'linked_space_id' => 'linkedSpaceId',
+        'next_update_on' => 'nextUpdateOn',
         'planned_purge_date' => 'plannedPurgeDate',
+        'processing_on' => 'processingOn',
         'space_view_id' => 'spaceViewId',
+        'state' => 'state',
+        'succeeded_on' => 'succeededOn',
         'tax_amount' => 'taxAmount',
+        'timeout_on' => 'timeoutOn',
         'transaction' => 'transaction',
         'version' => 'version'
     ];
@@ -108,12 +135,21 @@ class TransactionLineItemVersion extends TransactionAwareEntity
         'amount' => 'setAmount',
         'created_by' => 'setCreatedBy',
         'created_on' => 'setCreatedOn',
+        'external_id' => 'setExternalId',
+        'failed_on' => 'setFailedOn',
+        'failure_reason' => 'setFailureReason',
+        'labels' => 'setLabels',
         'language' => 'setLanguage',
         'line_items' => 'setLineItems',
         'linked_space_id' => 'setLinkedSpaceId',
+        'next_update_on' => 'setNextUpdateOn',
         'planned_purge_date' => 'setPlannedPurgeDate',
+        'processing_on' => 'setProcessingOn',
         'space_view_id' => 'setSpaceViewId',
+        'state' => 'setState',
+        'succeeded_on' => 'setSucceededOn',
         'tax_amount' => 'setTaxAmount',
+        'timeout_on' => 'setTimeoutOn',
         'transaction' => 'setTransaction',
         'version' => 'setVersion'
     ];
@@ -127,12 +163,21 @@ class TransactionLineItemVersion extends TransactionAwareEntity
         'amount' => 'getAmount',
         'created_by' => 'getCreatedBy',
         'created_on' => 'getCreatedOn',
+        'external_id' => 'getExternalId',
+        'failed_on' => 'getFailedOn',
+        'failure_reason' => 'getFailureReason',
+        'labels' => 'getLabels',
         'language' => 'getLanguage',
         'line_items' => 'getLineItems',
         'linked_space_id' => 'getLinkedSpaceId',
+        'next_update_on' => 'getNextUpdateOn',
         'planned_purge_date' => 'getPlannedPurgeDate',
+        'processing_on' => 'getProcessingOn',
         'space_view_id' => 'getSpaceViewId',
+        'state' => 'getState',
+        'succeeded_on' => 'getSucceededOn',
         'tax_amount' => 'getTaxAmount',
+        'timeout_on' => 'getTimeoutOn',
         'transaction' => 'getTransaction',
         'version' => 'getVersion'
     ];
@@ -157,17 +202,35 @@ class TransactionLineItemVersion extends TransactionAwareEntity
         
         $this->container['created_on'] = isset($data['created_on']) ? $data['created_on'] : null;
         
+        $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
+        
+        $this->container['failed_on'] = isset($data['failed_on']) ? $data['failed_on'] : null;
+        
+        $this->container['failure_reason'] = isset($data['failure_reason']) ? $data['failure_reason'] : null;
+        
+        $this->container['labels'] = isset($data['labels']) ? $data['labels'] : null;
+        
         $this->container['language'] = isset($data['language']) ? $data['language'] : null;
         
         $this->container['line_items'] = isset($data['line_items']) ? $data['line_items'] : null;
         
         $this->container['linked_space_id'] = isset($data['linked_space_id']) ? $data['linked_space_id'] : null;
         
+        $this->container['next_update_on'] = isset($data['next_update_on']) ? $data['next_update_on'] : null;
+        
         $this->container['planned_purge_date'] = isset($data['planned_purge_date']) ? $data['planned_purge_date'] : null;
+        
+        $this->container['processing_on'] = isset($data['processing_on']) ? $data['processing_on'] : null;
         
         $this->container['space_view_id'] = isset($data['space_view_id']) ? $data['space_view_id'] : null;
         
+        $this->container['state'] = isset($data['state']) ? $data['state'] : null;
+        
+        $this->container['succeeded_on'] = isset($data['succeeded_on']) ? $data['succeeded_on'] : null;
+        
         $this->container['tax_amount'] = isset($data['tax_amount']) ? $data['tax_amount'] : null;
+        
+        $this->container['timeout_on'] = isset($data['timeout_on']) ? $data['timeout_on'] : null;
         
         $this->container['transaction'] = isset($data['transaction']) ? $data['transaction'] : null;
         
@@ -327,13 +390,113 @@ class TransactionLineItemVersion extends TransactionAwareEntity
     /**
      * Sets created_on
      *
-     * @param \DateTime $created_on The created on date indicates the date on which the entity was stored into the database.
+     * @param \DateTime $created_on The date and time when the object was created.
      *
      * @return $this
      */
     public function setCreatedOn($created_on)
     {
         $this->container['created_on'] = $created_on;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets external_id
+     *
+     * @return string
+     */
+    public function getExternalId()
+    {
+        return $this->container['external_id'];
+    }
+
+    /**
+     * Sets external_id
+     *
+     * @param string $external_id A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+     *
+     * @return $this
+     */
+    public function setExternalId($external_id)
+    {
+        $this->container['external_id'] = $external_id;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets failed_on
+     *
+     * @return \DateTime
+     */
+    public function getFailedOn()
+    {
+        return $this->container['failed_on'];
+    }
+
+    /**
+     * Sets failed_on
+     *
+     * @param \DateTime $failed_on 
+     *
+     * @return $this
+     */
+    public function setFailedOn($failed_on)
+    {
+        $this->container['failed_on'] = $failed_on;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets failure_reason
+     *
+     * @return \WeArePlanet\Sdk\Model\FailureReason
+     */
+    public function getFailureReason()
+    {
+        return $this->container['failure_reason'];
+    }
+
+    /**
+     * Sets failure_reason
+     *
+     * @param \WeArePlanet\Sdk\Model\FailureReason $failure_reason 
+     *
+     * @return $this
+     */
+    public function setFailureReason($failure_reason)
+    {
+        $this->container['failure_reason'] = $failure_reason;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets labels
+     *
+     * @return \WeArePlanet\Sdk\Model\Label[]
+     */
+    public function getLabels()
+    {
+        return $this->container['labels'];
+    }
+
+    /**
+     * Sets labels
+     *
+     * @param \WeArePlanet\Sdk\Model\Label[] $labels 
+     *
+     * @return $this
+     */
+    public function setLabels($labels)
+    {
+        $this->container['labels'] = $labels;
 
         return $this;
     }
@@ -352,7 +515,7 @@ class TransactionLineItemVersion extends TransactionAwareEntity
     /**
      * Sets language
      *
-     * @param string $language 
+     * @param string $language The language that is linked to the object.
      *
      * @return $this
      */
@@ -402,13 +565,38 @@ class TransactionLineItemVersion extends TransactionAwareEntity
     /**
      * Sets linked_space_id
      *
-     * @param int $linked_space_id The linked space id holds the ID of the space to which the entity belongs to.
+     * @param int $linked_space_id The ID of the space this object belongs to.
      *
      * @return $this
      */
     public function setLinkedSpaceId($linked_space_id)
     {
         $this->container['linked_space_id'] = $linked_space_id;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets next_update_on
+     *
+     * @return \DateTime
+     */
+    public function getNextUpdateOn()
+    {
+        return $this->container['next_update_on'];
+    }
+
+    /**
+     * Sets next_update_on
+     *
+     * @param \DateTime $next_update_on 
+     *
+     * @return $this
+     */
+    public function setNextUpdateOn($next_update_on)
+    {
+        $this->container['next_update_on'] = $next_update_on;
 
         return $this;
     }
@@ -427,13 +615,38 @@ class TransactionLineItemVersion extends TransactionAwareEntity
     /**
      * Sets planned_purge_date
      *
-     * @param \DateTime $planned_purge_date The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+     * @param \DateTime $planned_purge_date The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
      *
      * @return $this
      */
     public function setPlannedPurgeDate($planned_purge_date)
     {
         $this->container['planned_purge_date'] = $planned_purge_date;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets processing_on
+     *
+     * @return \DateTime
+     */
+    public function getProcessingOn()
+    {
+        return $this->container['processing_on'];
+    }
+
+    /**
+     * Sets processing_on
+     *
+     * @param \DateTime $processing_on 
+     *
+     * @return $this
+     */
+    public function setProcessingOn($processing_on)
+    {
+        $this->container['processing_on'] = $processing_on;
 
         return $this;
     }
@@ -465,6 +678,56 @@ class TransactionLineItemVersion extends TransactionAwareEntity
     
 
     /**
+     * Gets state
+     *
+     * @return \WeArePlanet\Sdk\Model\TransactionLineItemVersionState
+     */
+    public function getState()
+    {
+        return $this->container['state'];
+    }
+
+    /**
+     * Sets state
+     *
+     * @param \WeArePlanet\Sdk\Model\TransactionLineItemVersionState $state The object's current state.
+     *
+     * @return $this
+     */
+    public function setState($state)
+    {
+        $this->container['state'] = $state;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets succeeded_on
+     *
+     * @return \DateTime
+     */
+    public function getSucceededOn()
+    {
+        return $this->container['succeeded_on'];
+    }
+
+    /**
+     * Sets succeeded_on
+     *
+     * @param \DateTime $succeeded_on 
+     *
+     * @return $this
+     */
+    public function setSucceededOn($succeeded_on)
+    {
+        $this->container['succeeded_on'] = $succeeded_on;
+
+        return $this;
+    }
+    
+
+    /**
      * Gets tax_amount
      *
      * @return float
@@ -484,6 +747,31 @@ class TransactionLineItemVersion extends TransactionAwareEntity
     public function setTaxAmount($tax_amount)
     {
         $this->container['tax_amount'] = $tax_amount;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets timeout_on
+     *
+     * @return \DateTime
+     */
+    public function getTimeoutOn()
+    {
+        return $this->container['timeout_on'];
+    }
+
+    /**
+     * Sets timeout_on
+     *
+     * @param \DateTime $timeout_on 
+     *
+     * @return $this
+     */
+    public function setTimeoutOn($timeout_on)
+    {
+        $this->container['timeout_on'] = $timeout_on;
 
         return $this;
     }
@@ -527,7 +815,7 @@ class TransactionLineItemVersion extends TransactionAwareEntity
     /**
      * Sets version
      *
-     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+     * @param int $version The version is used for optimistic locking and incremented whenever the object is updated.
      *
      * @return $this
      */

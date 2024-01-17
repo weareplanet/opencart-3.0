@@ -29,7 +29,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @category    Class
  * @description 
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class PaymentTerminalConfigurationVersion implements ModelInterface, ArrayAccess
@@ -53,6 +53,7 @@ class PaymentTerminalConfigurationVersion implements ModelInterface, ArrayAccess
         'connector_configurations' => 'int[]',
         'created_by' => 'int',
         'created_on' => '\DateTime',
+        'default_currency' => 'string',
         'id' => 'int',
         'linked_space_id' => 'int',
         'maintenance_window_duration' => 'string',
@@ -74,6 +75,7 @@ class PaymentTerminalConfigurationVersion implements ModelInterface, ArrayAccess
         'connector_configurations' => 'int64',
         'created_by' => 'int64',
         'created_on' => 'date-time',
+        'default_currency' => null,
         'id' => 'int64',
         'linked_space_id' => 'int64',
         'maintenance_window_duration' => null,
@@ -96,6 +98,7 @@ class PaymentTerminalConfigurationVersion implements ModelInterface, ArrayAccess
         'connector_configurations' => 'connectorConfigurations',
         'created_by' => 'createdBy',
         'created_on' => 'createdOn',
+        'default_currency' => 'defaultCurrency',
         'id' => 'id',
         'linked_space_id' => 'linkedSpaceId',
         'maintenance_window_duration' => 'maintenanceWindowDuration',
@@ -117,6 +120,7 @@ class PaymentTerminalConfigurationVersion implements ModelInterface, ArrayAccess
         'connector_configurations' => 'setConnectorConfigurations',
         'created_by' => 'setCreatedBy',
         'created_on' => 'setCreatedOn',
+        'default_currency' => 'setDefaultCurrency',
         'id' => 'setId',
         'linked_space_id' => 'setLinkedSpaceId',
         'maintenance_window_duration' => 'setMaintenanceWindowDuration',
@@ -138,6 +142,7 @@ class PaymentTerminalConfigurationVersion implements ModelInterface, ArrayAccess
         'connector_configurations' => 'getConnectorConfigurations',
         'created_by' => 'getCreatedBy',
         'created_on' => 'getCreatedOn',
+        'default_currency' => 'getDefaultCurrency',
         'id' => 'getId',
         'linked_space_id' => 'getLinkedSpaceId',
         'maintenance_window_duration' => 'getMaintenanceWindowDuration',
@@ -174,6 +179,8 @@ class PaymentTerminalConfigurationVersion implements ModelInterface, ArrayAccess
         $this->container['created_by'] = isset($data['created_by']) ? $data['created_by'] : null;
         
         $this->container['created_on'] = isset($data['created_on']) ? $data['created_on'] : null;
+        
+        $this->container['default_currency'] = isset($data['default_currency']) ? $data['default_currency'] : null;
         
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         
@@ -372,13 +379,38 @@ class PaymentTerminalConfigurationVersion implements ModelInterface, ArrayAccess
     /**
      * Sets created_on
      *
-     * @param \DateTime $created_on The created on date indicates the date on which the entity was stored into the database.
+     * @param \DateTime $created_on The date and time when the object was created.
      *
      * @return $this
      */
     public function setCreatedOn($created_on)
     {
         $this->container['created_on'] = $created_on;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets default_currency
+     *
+     * @return string
+     */
+    public function getDefaultCurrency()
+    {
+        return $this->container['default_currency'];
+    }
+
+    /**
+     * Sets default_currency
+     *
+     * @param string $default_currency The currency is derived by default from the terminal location. By setting a specific currency the derived currency is overridden.
+     *
+     * @return $this
+     */
+    public function setDefaultCurrency($default_currency)
+    {
+        $this->container['default_currency'] = $default_currency;
 
         return $this;
     }
@@ -397,7 +429,7 @@ class PaymentTerminalConfigurationVersion implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
+     * @param int $id A unique identifier for the object.
      *
      * @return $this
      */
@@ -422,7 +454,7 @@ class PaymentTerminalConfigurationVersion implements ModelInterface, ArrayAccess
     /**
      * Sets linked_space_id
      *
-     * @param int $linked_space_id The linked space id holds the ID of the space to which the entity belongs to.
+     * @param int $linked_space_id The ID of the space this object belongs to.
      *
      * @return $this
      */
@@ -497,7 +529,7 @@ class PaymentTerminalConfigurationVersion implements ModelInterface, ArrayAccess
     /**
      * Sets planned_purge_date
      *
-     * @param \DateTime $planned_purge_date The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+     * @param \DateTime $planned_purge_date The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
      *
      * @return $this
      */
@@ -522,7 +554,7 @@ class PaymentTerminalConfigurationVersion implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param \WeArePlanet\Sdk\Model\PaymentTerminalConfigurationVersionState $state 
+     * @param \WeArePlanet\Sdk\Model\PaymentTerminalConfigurationVersionState $state The object's current state.
      *
      * @return $this
      */
@@ -572,7 +604,7 @@ class PaymentTerminalConfigurationVersion implements ModelInterface, ArrayAccess
     /**
      * Sets version
      *
-     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+     * @param int $version The version is used for optimistic locking and incremented whenever the object is updated.
      *
      * @return $this
      */

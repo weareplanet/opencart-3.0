@@ -29,7 +29,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @category    Class
  * @description 
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class Scope implements ModelInterface, ArrayAccess
@@ -302,7 +302,7 @@ class Scope implements ModelInterface, ArrayAccess
     /**
      * Sets domain_name
      *
-     * @param string $domain_name The domain name to which this scope is mapped to.
+     * @param string $domain_name The domain name that belongs to the scope.
      *
      * @return $this
      */
@@ -331,7 +331,7 @@ class Scope implements ModelInterface, ArrayAccess
     /**
      * Sets features
      *
-     * @param \WeArePlanet\Sdk\Model\Feature[] $features 
+     * @param \WeArePlanet\Sdk\Model\Feature[] $features The list of features that are active in the scope.
      *
      * @return $this
      */
@@ -356,7 +356,7 @@ class Scope implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
+     * @param int $id A unique identifier for the object.
      *
      * @return $this
      */
@@ -381,7 +381,7 @@ class Scope implements ModelInterface, ArrayAccess
     /**
      * Sets machine_name
      *
-     * @param string $machine_name 
+     * @param string $machine_name The name identifying the scope in e.g. URLs.
      *
      * @return $this
      */
@@ -410,7 +410,7 @@ class Scope implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name The name of the scope is shown to the user where the user should select a scope.
+     * @param string $name The name used to identify the scope.
      *
      * @return $this
      */
@@ -439,7 +439,7 @@ class Scope implements ModelInterface, ArrayAccess
     /**
      * Sets planned_purge_date
      *
-     * @param \DateTime $planned_purge_date The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+     * @param \DateTime $planned_purge_date The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
      *
      * @return $this
      */
@@ -464,7 +464,7 @@ class Scope implements ModelInterface, ArrayAccess
     /**
      * Sets port
      *
-     * @param int $port The port number to which this scope is mapped to.
+     * @param int $port The port where the scope can be accessed.
      *
      * @return $this
      */
@@ -489,7 +489,7 @@ class Scope implements ModelInterface, ArrayAccess
     /**
      * Sets ssl_active
      *
-     * @param bool $ssl_active Define whether the scope supports SSL.
+     * @param bool $ssl_active Whether the scope supports SSL.
      *
      * @return $this
      */
@@ -514,7 +514,7 @@ class Scope implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param \WeArePlanet\Sdk\Model\CreationEntityState $state 
+     * @param \WeArePlanet\Sdk\Model\CreationEntityState $state The object's current state.
      *
      * @return $this
      */
@@ -539,7 +539,7 @@ class Scope implements ModelInterface, ArrayAccess
     /**
      * Sets themes
      *
-     * @param string[] $themes The themes determines how the application layout, look and feel is. By providing multiple themes you can fallback to other themes.
+     * @param string[] $themes The themes that determine the look and feel of the scope's user interface. A fall-through strategy is applied when building the actual theme.
      *
      * @return $this
      */
@@ -564,7 +564,7 @@ class Scope implements ModelInterface, ArrayAccess
     /**
      * Sets url
      *
-     * @param string $url 
+     * @param string $url The URL where the scope can be accessed.
      *
      * @return $this
      */
@@ -589,7 +589,7 @@ class Scope implements ModelInterface, ArrayAccess
     /**
      * Sets version
      *
-     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+     * @param int $version The version is used for optimistic locking and incremented whenever the object is updated.
      *
      * @return $this
      */

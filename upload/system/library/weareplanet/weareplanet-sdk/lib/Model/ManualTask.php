@@ -27,9 +27,9 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * ManualTask model
  *
  * @category    Class
- * @description A manual task requires a manual intervention by a human.
+ * @description A manual task requires the manual intervention of a human.
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class ManualTask implements ModelInterface, ArrayAccess
@@ -56,7 +56,6 @@ class ManualTask implements ModelInterface, ArrayAccess
         'id' => 'int',
         'linked_space_id' => 'int',
         'planned_purge_date' => '\DateTime',
-        'space_id' => 'int',
         'state' => '\WeArePlanet\Sdk\Model\ManualTaskState',
         'type' => 'int'
     ];
@@ -74,7 +73,6 @@ class ManualTask implements ModelInterface, ArrayAccess
         'id' => 'int64',
         'linked_space_id' => 'int64',
         'planned_purge_date' => 'date-time',
-        'space_id' => 'int64',
         'state' => null,
         'type' => 'int64'
     ];
@@ -93,7 +91,6 @@ class ManualTask implements ModelInterface, ArrayAccess
         'id' => 'id',
         'linked_space_id' => 'linkedSpaceId',
         'planned_purge_date' => 'plannedPurgeDate',
-        'space_id' => 'spaceId',
         'state' => 'state',
         'type' => 'type'
     ];
@@ -111,7 +108,6 @@ class ManualTask implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'linked_space_id' => 'setLinkedSpaceId',
         'planned_purge_date' => 'setPlannedPurgeDate',
-        'space_id' => 'setSpaceId',
         'state' => 'setState',
         'type' => 'setType'
     ];
@@ -129,7 +125,6 @@ class ManualTask implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'linked_space_id' => 'getLinkedSpaceId',
         'planned_purge_date' => 'getPlannedPurgeDate',
-        'space_id' => 'getSpaceId',
         'state' => 'getState',
         'type' => 'getType'
     ];
@@ -165,8 +160,6 @@ class ManualTask implements ModelInterface, ArrayAccess
         $this->container['linked_space_id'] = isset($data['linked_space_id']) ? $data['linked_space_id'] : null;
         
         $this->container['planned_purge_date'] = isset($data['planned_purge_date']) ? $data['planned_purge_date'] : null;
-        
-        $this->container['space_id'] = isset($data['space_id']) ? $data['space_id'] : null;
         
         $this->container['state'] = isset($data['state']) ? $data['state'] : null;
         
@@ -276,7 +269,7 @@ class ManualTask implements ModelInterface, ArrayAccess
     /**
      * Sets actions
      *
-     * @param int[] $actions 
+     * @param int[] $actions The actions that can be triggered to handle the manual task.
      *
      * @return $this
      */
@@ -301,7 +294,7 @@ class ManualTask implements ModelInterface, ArrayAccess
     /**
      * Sets context_entity_id
      *
-     * @param int $context_entity_id The context entity ID links the manual task to the entity which caused its creation.
+     * @param int $context_entity_id The ID of the entity the manual task is linked to.
      *
      * @return $this
      */
@@ -326,7 +319,7 @@ class ManualTask implements ModelInterface, ArrayAccess
     /**
      * Sets created_on
      *
-     * @param \DateTime $created_on The created on date indicates the date on which the entity was stored into the database.
+     * @param \DateTime $created_on The date and time when the object was created.
      *
      * @return $this
      */
@@ -351,7 +344,7 @@ class ManualTask implements ModelInterface, ArrayAccess
     /**
      * Sets expires_on
      *
-     * @param \DateTime $expires_on The expiry date indicates until when the manual task has to be executed.
+     * @param \DateTime $expires_on The date and time until when the manual task has to be handled.
      *
      * @return $this
      */
@@ -376,7 +369,7 @@ class ManualTask implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
+     * @param int $id A unique identifier for the object.
      *
      * @return $this
      */
@@ -401,7 +394,7 @@ class ManualTask implements ModelInterface, ArrayAccess
     /**
      * Sets linked_space_id
      *
-     * @param int $linked_space_id The linked space id holds the ID of the space to which the entity belongs to.
+     * @param int $linked_space_id The ID of the space this object belongs to.
      *
      * @return $this
      */
@@ -426,38 +419,13 @@ class ManualTask implements ModelInterface, ArrayAccess
     /**
      * Sets planned_purge_date
      *
-     * @param \DateTime $planned_purge_date The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+     * @param \DateTime $planned_purge_date The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
      *
      * @return $this
      */
     public function setPlannedPurgeDate($planned_purge_date)
     {
         $this->container['planned_purge_date'] = $planned_purge_date;
-
-        return $this;
-    }
-    
-
-    /**
-     * Gets space_id
-     *
-     * @return int
-     */
-    public function getSpaceId()
-    {
-        return $this->container['space_id'];
-    }
-
-    /**
-     * Sets space_id
-     *
-     * @param int $space_id 
-     *
-     * @return $this
-     */
-    public function setSpaceId($space_id)
-    {
-        $this->container['space_id'] = $space_id;
 
         return $this;
     }
@@ -476,7 +444,7 @@ class ManualTask implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param \WeArePlanet\Sdk\Model\ManualTaskState $state 
+     * @param \WeArePlanet\Sdk\Model\ManualTaskState $state The object's current state.
      *
      * @return $this
      */
@@ -501,7 +469,7 @@ class ManualTask implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param int $type The type categorizes the manual task.
+     * @param int $type The manual task's type.
      *
      * @return $this
      */

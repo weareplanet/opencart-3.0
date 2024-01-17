@@ -29,7 +29,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @category    Class
  * @description 
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class Account implements ModelInterface, ArrayAccess
@@ -333,7 +333,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets active
      *
-     * @param bool $active Active means that this account and all accounts in the hierarchy are active.
+     * @param bool $active Whether this account and all its parent accounts are active.
      *
      * @return $this
      */
@@ -358,7 +358,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets active_or_restricted_active
      *
-     * @param bool $active_or_restricted_active This property is true when all accounts in the hierarchy are active or restricted active.
+     * @param bool $active_or_restricted_active Whether this account and all its parent accounts are active or restricted active.
      *
      * @return $this
      */
@@ -383,7 +383,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets created_by
      *
-     * @param int $created_by The ID of the user who created this entity.
+     * @param int $created_by The ID of the user the account was created by.
      *
      * @return $this
      */
@@ -408,7 +408,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets created_on
      *
-     * @param \DateTime $created_on The date and time when this entity was created.
+     * @param \DateTime $created_on The date and time when the account was created.
      *
      * @return $this
      */
@@ -433,7 +433,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets deleted_by
      *
-     * @param int $deleted_by The ID of a user that deleted this entity.
+     * @param int $deleted_by The ID of a user the account was deleted by.
      *
      * @return $this
      */
@@ -458,7 +458,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets deleted_on
      *
-     * @param \DateTime $deleted_on The date and time when this entity was deleted.
+     * @param \DateTime $deleted_on The date and time when the account was deleted.
      *
      * @return $this
      */
@@ -483,7 +483,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
+     * @param int $id A unique identifier for the object.
      *
      * @return $this
      */
@@ -508,7 +508,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets last_modified_date
      *
-     * @param \DateTime $last_modified_date 
+     * @param \DateTime $last_modified_date The date and time when the object was last modified.
      *
      * @return $this
      */
@@ -533,7 +533,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name The name of the account identifies the account within the administrative interface.
+     * @param string $name The name used to identify the account.
      *
      * @return $this
      */
@@ -565,7 +565,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets parent_account
      *
-     * @param \WeArePlanet\Sdk\Model\Account $parent_account The account which is responsible for administering the account.
+     * @param \WeArePlanet\Sdk\Model\Account $parent_account The parent account responsible for administering this account.
      *
      * @return $this
      */
@@ -590,7 +590,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets planned_purge_date
      *
-     * @param \DateTime $planned_purge_date The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+     * @param \DateTime $planned_purge_date The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
      *
      * @return $this
      */
@@ -615,7 +615,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets restricted_active
      *
-     * @param bool $restricted_active Restricted active means that at least one account in the hierarchy is only restricted active, but all are either restricted active or active.
+     * @param bool $restricted_active Whether this account and all its parent accounts are active or restricted active. There is at least one account that is restricted active.
      *
      * @return $this
      */
@@ -640,7 +640,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets scope
      *
-     * @param int $scope This is the scope to which the account belongs to.
+     * @param int $scope The scope that the account belongs to.
      *
      * @return $this
      */
@@ -665,7 +665,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param \WeArePlanet\Sdk\Model\AccountState $state 
+     * @param \WeArePlanet\Sdk\Model\AccountState $state The object's current state.
      *
      * @return $this
      */
@@ -690,7 +690,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets subaccount_limit
      *
-     * @param int $subaccount_limit This property restricts the number of subaccounts which can be created within this account.
+     * @param int $subaccount_limit The number of sub-accounts that can be created within this account.
      *
      * @return $this
      */
@@ -715,7 +715,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param \WeArePlanet\Sdk\Model\AccountType $type The account type defines which role and capabilities it has.
+     * @param \WeArePlanet\Sdk\Model\AccountType $type The account's type which defines its role and capabilities.
      *
      * @return $this
      */
@@ -740,7 +740,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets version
      *
-     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+     * @param int $version The version is used for optimistic locking and incremented whenever the object is updated.
      *
      * @return $this
      */
