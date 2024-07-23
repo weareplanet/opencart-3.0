@@ -495,6 +495,11 @@ class Transaction extends AbstractService {
 
 	private function assembleAddress($source, $prefix = ''){
 		$address = new \WeArePlanet\Sdk\Model\AddressCreate();
+		$customer = \WeArePlanetHelper::instance($this->registry)->getCustomer();
+
+		if (isset($customer['email'])) {
+			$address->setEmailAddress($this->getFixedSource($customer, 'email', 150));
+		}
 		
 		if (isset($source[$prefix . 'city'])) {
 			$address->setCity($this->getFixedSource($source, $prefix . 'city', 100, false));

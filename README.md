@@ -13,7 +13,7 @@ This repository contains the OpenCart  WeArePlanet payment module that enables t
 
 ## Documentation
 
-* [English](https://plugin-documentation.weareplanet.com/weareplanet/opencart-3.0/1.0.57/docs/en/documentation.html)
+* [English](https://plugin-documentation.weareplanet.com/weareplanet/opencart-3.0/1.0.58/docs/en/documentation.html)
 
 ## Support
 
@@ -21,4 +21,4 @@ Support queries can be issued on the [WeArePlanet support site](https://payments
 
 ## License
 
-Please see the [license file](https://github.com/weareplanet/opencart-3.0/blob/1.0.57/LICENSE) for more information.
+Please see the [license file](https://github.com/weareplanet/opencart-3.0/blob/1.0.58/LICENSE) for more information.
