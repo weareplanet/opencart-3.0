@@ -14,7 +14,7 @@ class ControllerExtensionWeArePlanetCron extends Controller {
 
 	public function index(){
 		$this->endRequestPrematurely();
-		
+
 		if (isset($this->request->get['security_token'])) {
 			$security_token = $this->request->get['security_token'];
 		}
@@ -22,9 +22,9 @@ class ControllerExtensionWeArePlanetCron extends Controller {
 			\WeArePlanetHelper::instance($this->registry)->log('Cron called without security token.', \WeArePlanetHelper::LOG_ERROR);
 			die();
 		}
-		
+
 		\WeArePlanet\Entity\Cron::cleanUpCronDB($this->registry);
-		
+
 		try {
 			\WeArePlanetHelper::instance($this->registry)->dbTransactionStart();
 			$result = \WeArePlanet\Entity\Cron::setProcessing($this->registry, $security_token);
@@ -35,15 +35,15 @@ class ControllerExtensionWeArePlanetCron extends Controller {
 		}
 		catch (Exception $e) {
 			// 1062 is mysql duplicate constraint error. This is expected and doesn't need to be logged.
-			if (strpos('1062', $e->getMessage()) === false && strpos('constraint_key', $e->getMessage()) === false) {
+			if (strpos($e->getMessage(),'1062',) === false && strpos($e->getMessage(),'constraint_key') === false) {
 				\WeArePlanetHelper::instance($this->registry)->log('Updating cron failed: ' . $e->getMessage(), \WeArePlanetHelper::LOG_ERROR);
 			}
 			\WeArePlanetHelper::instance($this->registry)->dbTransactionRollback();
 			die();
 		}
-		
+
 		$errors = $this->runTasks();
-		
+
 		try {
 			\WeArePlanetHelper::instance($this->registry)->dbTransactionStart();
 			$result = \WeArePlanet\Entity\Cron::setComplete($this->registry, $security_token, implode('. ', $errors));
